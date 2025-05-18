@@ -2,7 +2,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-// hola
 package airport;
 
 import com.formdev.flatlaf.FlatDarkLaf;
@@ -76,7 +75,7 @@ public class AirportFrame extends javax.swing.JFrame {
             MONTH2.addItem("" + i);
             MONTH3.addItem("" + i);
             MONTH4.addItem("" + i);
-            jComboBox6.addItem("" + i);
+            cbHour.addItem("" + i);
         }
     }
 
@@ -85,7 +84,7 @@ public class AirportFrame extends javax.swing.JFrame {
             DAY2.addItem("" + i);
             DAY3.addItem("" + i);
             DAY4.addItem("" + i);
-            jComboBox8.addItem("" + i);
+            cbMinute.addItem("" + i);
         }
     }
 
@@ -208,34 +207,34 @@ public class AirportFrame extends javax.swing.JFrame {
         lblFight = new javax.swing.JLabel();
         cbFlight = new javax.swing.JComboBox<>();
         btnAdd = new javax.swing.JButton();
-        jPanel7 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton2 = new javax.swing.JButton();
-        jPanel8 = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
-        jButton3 = new javax.swing.JButton();
-        jPanel9 = new javax.swing.JPanel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
-        jButton4 = new javax.swing.JButton();
-        jPanel10 = new javax.swing.JPanel();
-        jButton5 = new javax.swing.JButton();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        jTable4 = new javax.swing.JTable();
-        jPanel11 = new javax.swing.JPanel();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        jTable5 = new javax.swing.JTable();
-        jButton6 = new javax.swing.JButton();
-        jPanel12 = new javax.swing.JPanel();
-        jComboBox6 = new javax.swing.JComboBox<>();
-        jLabel46 = new javax.swing.JLabel();
-        jLabel47 = new javax.swing.JLabel();
-        jComboBox7 = new javax.swing.JComboBox<>();
-        jLabel48 = new javax.swing.JLabel();
-        jComboBox8 = new javax.swing.JComboBox<>();
-        jButton7 = new javax.swing.JButton();
+        panel8 = new javax.swing.JPanel();
+        scrollPane8 = new javax.swing.JScrollPane();
+        table8 = new javax.swing.JTable();
+        btnRefresh8 = new javax.swing.JButton();
+        panel9 = new javax.swing.JPanel();
+        scrollPane9 = new javax.swing.JScrollPane();
+        table9 = new javax.swing.JTable();
+        btnRefresh9 = new javax.swing.JButton();
+        panel10 = new javax.swing.JPanel();
+        scrollPane10 = new javax.swing.JScrollPane();
+        table10 = new javax.swing.JTable();
+        btnRefresh10 = new javax.swing.JButton();
+        panel11 = new javax.swing.JPanel();
+        btnRefresh11 = new javax.swing.JButton();
+        scrollPane11 = new javax.swing.JScrollPane();
+        table11 = new javax.swing.JTable();
+        panel12 = new javax.swing.JPanel();
+        scrollPane12 = new javax.swing.JScrollPane();
+        table12 = new javax.swing.JTable();
+        btnRefresh12 = new javax.swing.JButton();
+        panel13 = new javax.swing.JPanel();
+        cbHour = new javax.swing.JComboBox<>();
+        lblHours = new javax.swing.JLabel();
+        lblId13 = new javax.swing.JLabel();
+        cbId = new javax.swing.JComboBox<>();
+        lblMinutes = new javax.swing.JLabel();
+        cbMinute = new javax.swing.JComboBox<>();
+        btnDelay = new javax.swing.JButton();
         panelRound3 = new airport.PanelRound();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -408,38 +407,38 @@ public class AirportFrame extends javax.swing.JFrame {
 
         txtId3.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         panel3.add(txtId3);
-        txtId3.setBounds(180, 93, 130, 29);
+        txtId3.setBounds(180, 93, 130, 31);
 
         lblBrand.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         lblBrand.setText("Brand:");
         panel3.add(lblBrand);
-        lblBrand.setBounds(53, 157, 52, 25);
+        lblBrand.setBounds(53, 157, 50, 25);
 
         txtBrand.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         panel3.add(txtBrand);
-        txtBrand.setBounds(180, 154, 130, 29);
+        txtBrand.setBounds(180, 154, 130, 31);
 
         txtModel.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         panel3.add(txtModel);
-        txtModel.setBounds(180, 213, 130, 29);
+        txtModel.setBounds(180, 213, 130, 31);
 
         lblModel.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         lblModel.setText("Model:");
         panel3.add(lblModel);
-        lblModel.setBounds(53, 216, 57, 25);
+        lblModel.setBounds(53, 216, 55, 25);
 
         txtMaxCap.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         panel3.add(txtMaxCap);
-        txtMaxCap.setBounds(180, 273, 130, 29);
+        txtMaxCap.setBounds(180, 273, 130, 31);
 
         lblMaxCap.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         lblMaxCap.setText("Max Capacity:");
         panel3.add(lblMaxCap);
-        lblMaxCap.setBounds(53, 276, 114, 25);
+        lblMaxCap.setBounds(53, 276, 109, 25);
 
         txtAirline.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         panel3.add(txtAirline);
-        txtAirline.setBounds(180, 333, 130, 29);
+        txtAirline.setBounds(180, 333, 130, 31);
 
         lblAirline.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         lblAirline.setText("Airline:");
@@ -783,7 +782,7 @@ public class AirportFrame extends javax.swing.JFrame {
                                 .addComponent(lblScaleLocation)
                                 .addComponent(cbLocation53, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(lblDuration52)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 136, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 134, Short.MAX_VALUE)
                 .addComponent(btnCreate5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(50, 50, 50))
         );
@@ -924,7 +923,7 @@ public class AirportFrame extends javax.swing.JFrame {
                 .addGroup(panel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblCountry6)
                     .addComponent(txtCountry6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addComponent(btnUpdate)
                 .addGap(113, 113, 113))
         );
@@ -964,7 +963,7 @@ public class AirportFrame extends javax.swing.JFrame {
                 .addGroup(panel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(cbFlight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtId7, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(834, Short.MAX_VALUE))
+                .addContainerGap(829, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel7Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -983,15 +982,15 @@ public class AirportFrame extends javax.swing.JFrame {
                 .addGroup(panel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblFight)
                     .addComponent(cbFlight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 299, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 288, Short.MAX_VALUE)
                 .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(85, 85, 85))
         );
 
         jTabbedPane1.addTab("Add to flight", panel7);
 
-        jTable1.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        table8.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        table8.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -1017,43 +1016,43 @@ public class AirportFrame extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        scrollPane8.setViewportView(table8);
 
-        jButton2.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        jButton2.setText("Refresh");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnRefresh8.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        btnRefresh8.setText("Refresh");
+        btnRefresh8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnRefresh8ActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
+        javax.swing.GroupLayout panel8Layout = new javax.swing.GroupLayout(panel8);
+        panel8.setLayout(panel8Layout);
+        panel8Layout.setHorizontalGroup(
+            panel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel8Layout.createSequentialGroup()
                 .addGap(269, 269, 269)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 590, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(298, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                .addComponent(scrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 590, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(291, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel8Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addComponent(btnRefresh8)
                 .addGap(527, 527, 527))
         );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
+        panel8Layout.setVerticalGroup(
+            panel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel8Layout.createSequentialGroup()
                 .addGap(61, 61, 61)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addComponent(scrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addComponent(btnRefresh8)
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab("Show my flights", jPanel7);
+        jTabbedPane1.addTab("Show my flights", panel8);
 
-        jTable2.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        table9.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        table9.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -1076,44 +1075,44 @@ public class AirportFrame extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(jTable2);
+        scrollPane9.setViewportView(table9);
 
-        jButton3.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        jButton3.setText("Refresh");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnRefresh9.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        btnRefresh9.setText("Refresh");
+        btnRefresh9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnRefresh9ActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
-        jPanel8.setLayout(jPanel8Layout);
-        jPanel8Layout.setHorizontalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel8Layout.createSequentialGroup()
+        javax.swing.GroupLayout panel9Layout = new javax.swing.GroupLayout(panel9);
+        panel9.setLayout(panel9Layout);
+        panel9Layout.setHorizontalGroup(
+            panel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel9Layout.createSequentialGroup()
+                .addGroup(panel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel9Layout.createSequentialGroup()
                         .addGap(489, 489, 489)
-                        .addComponent(jButton3))
-                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addComponent(btnRefresh9))
+                    .addGroup(panel9Layout.createSequentialGroup()
                         .addGap(47, 47, 47)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1078, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(32, Short.MAX_VALUE))
+                        .addComponent(scrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 1078, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
-        jPanel8Layout.setVerticalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-                .addContainerGap(81, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        panel9Layout.setVerticalGroup(
+            panel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel9Layout.createSequentialGroup()
+                .addContainerGap(72, Short.MAX_VALUE)
+                .addComponent(scrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton3)
+                .addComponent(btnRefresh9)
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab("Show all passengers", jPanel8);
+        jTabbedPane1.addTab("Show all passengers", panel9);
 
-        jTable3.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        table10.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        table10.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -1136,51 +1135,51 @@ public class AirportFrame extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane3.setViewportView(jTable3);
+        scrollPane10.setViewportView(table10);
 
-        jButton4.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        jButton4.setText("Refresh");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnRefresh10.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        btnRefresh10.setText("Refresh");
+        btnRefresh10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btnRefresh10ActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
-        jPanel9.setLayout(jPanel9Layout);
-        jPanel9Layout.setHorizontalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel9Layout.createSequentialGroup()
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel9Layout.createSequentialGroup()
+        javax.swing.GroupLayout panel10Layout = new javax.swing.GroupLayout(panel10);
+        panel10.setLayout(panel10Layout);
+        panel10Layout.setHorizontalGroup(
+            panel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel10Layout.createSequentialGroup()
+                .addGroup(panel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel10Layout.createSequentialGroup()
                         .addGap(29, 29, 29)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 1100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addComponent(scrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 1100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panel10Layout.createSequentialGroup()
                         .addGap(521, 521, 521)
-                        .addComponent(jButton4)))
-                .addContainerGap(28, Short.MAX_VALUE))
+                        .addComponent(btnRefresh10)))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
-        jPanel9Layout.setVerticalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel9Layout.createSequentialGroup()
+        panel10Layout.setVerticalGroup(
+            panel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel10Layout.createSequentialGroup()
                 .addGap(60, 60, 60)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(scrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton4)
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addComponent(btnRefresh10)
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Show all flights", jPanel9);
+        jTabbedPane1.addTab("Show all flights", panel10);
 
-        jButton5.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        jButton5.setText("Refresh");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        btnRefresh11.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        btnRefresh11.setText("Refresh");
+        btnRefresh11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                btnRefresh11ActionPerformed(evt);
             }
         });
 
-        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+        table11.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -1203,35 +1202,35 @@ public class AirportFrame extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane4.setViewportView(jTable4);
+        scrollPane11.setViewportView(table11);
 
-        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
-        jPanel10.setLayout(jPanel10Layout);
-        jPanel10Layout.setHorizontalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel10Layout.createSequentialGroup()
-                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel10Layout.createSequentialGroup()
+        javax.swing.GroupLayout panel11Layout = new javax.swing.GroupLayout(panel11);
+        panel11.setLayout(panel11Layout);
+        panel11Layout.setHorizontalGroup(
+            panel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel11Layout.createSequentialGroup()
+                .addGroup(panel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel11Layout.createSequentialGroup()
                         .addGap(508, 508, 508)
-                        .addComponent(jButton5))
-                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addComponent(btnRefresh11))
+                    .addGroup(panel11Layout.createSequentialGroup()
                         .addGap(145, 145, 145)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 816, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(196, Short.MAX_VALUE))
+                        .addComponent(scrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 816, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(189, Short.MAX_VALUE))
         );
-        jPanel10Layout.setVerticalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
-                .addContainerGap(59, Short.MAX_VALUE)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        panel11Layout.setVerticalGroup(
+            panel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel11Layout.createSequentialGroup()
+                .addContainerGap(45, Short.MAX_VALUE)
+                .addComponent(scrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34)
-                .addComponent(jButton5)
+                .addComponent(btnRefresh11)
                 .addGap(17, 17, 17))
         );
 
-        jTabbedPane1.addTab("Show all planes", jPanel10);
+        jTabbedPane1.addTab("Show all planes", panel11);
 
-        jTable5.setModel(new javax.swing.table.DefaultTableModel(
+        table12.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -1254,114 +1253,114 @@ public class AirportFrame extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane5.setViewportView(jTable5);
+        scrollPane12.setViewportView(table12);
 
-        jButton6.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        jButton6.setText("Refresh");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        btnRefresh12.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        btnRefresh12.setText("Refresh");
+        btnRefresh12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                btnRefresh12ActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
-        jPanel11.setLayout(jPanel11Layout);
-        jPanel11Layout.setHorizontalGroup(
-            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel11Layout.createSequentialGroup()
-                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel11Layout.createSequentialGroup()
+        javax.swing.GroupLayout panel12Layout = new javax.swing.GroupLayout(panel12);
+        panel12.setLayout(panel12Layout);
+        panel12Layout.setHorizontalGroup(
+            panel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel12Layout.createSequentialGroup()
+                .addGroup(panel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel12Layout.createSequentialGroup()
                         .addGap(508, 508, 508)
-                        .addComponent(jButton6))
-                    .addGroup(jPanel11Layout.createSequentialGroup()
+                        .addComponent(btnRefresh12))
+                    .addGroup(panel12Layout.createSequentialGroup()
                         .addGap(226, 226, 226)
-                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 652, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(279, Short.MAX_VALUE))
+                        .addComponent(scrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 652, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(272, Short.MAX_VALUE))
         );
-        jPanel11Layout.setVerticalGroup(
-            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
-                .addContainerGap(62, Short.MAX_VALUE)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        panel12Layout.setVerticalGroup(
+            panel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel12Layout.createSequentialGroup()
+                .addContainerGap(48, Short.MAX_VALUE)
+                .addComponent(scrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
-                .addComponent(jButton6)
+                .addComponent(btnRefresh12)
                 .addGap(17, 17, 17))
         );
 
-        jTabbedPane1.addTab("Show all locations", jPanel11);
+        jTabbedPane1.addTab("Show all locations", panel12);
 
-        jComboBox6.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hour" }));
+        cbHour.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        cbHour.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hour" }));
 
-        jLabel46.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        jLabel46.setText("Hours:");
+        lblHours.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        lblHours.setText("Hours:");
 
-        jLabel47.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        jLabel47.setText("ID:");
+        lblId13.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        lblId13.setText("ID:");
 
-        jComboBox7.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        jComboBox7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID" }));
+        cbId.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        cbId.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID" }));
 
-        jLabel48.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        jLabel48.setText("Minutes:");
+        lblMinutes.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        lblMinutes.setText("Minutes:");
 
-        jComboBox8.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        jComboBox8.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Minute" }));
+        cbMinute.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        cbMinute.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Minute" }));
 
-        jButton7.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        jButton7.setText("Delay");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        btnDelay.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        btnDelay.setText("Delay");
+        btnDelay.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                btnDelayActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
-        jPanel12.setLayout(jPanel12Layout);
-        jPanel12Layout.setHorizontalGroup(
-            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel12Layout.createSequentialGroup()
+        javax.swing.GroupLayout panel13Layout = new javax.swing.GroupLayout(panel13);
+        panel13.setLayout(panel13Layout);
+        panel13Layout.setHorizontalGroup(
+            panel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel13Layout.createSequentialGroup()
                 .addGap(94, 94, 94)
-                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel12Layout.createSequentialGroup()
-                        .addComponent(jLabel48)
+                .addGroup(panel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel13Layout.createSequentialGroup()
+                        .addComponent(lblMinutes)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jComboBox8, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel12Layout.createSequentialGroup()
-                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel47)
-                            .addComponent(jLabel46))
+                        .addComponent(cbMinute, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panel13Layout.createSequentialGroup()
+                        .addGroup(panel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblId13)
+                            .addComponent(lblHours))
                         .addGap(79, 79, 79)
-                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox6, 0, 112, Short.MAX_VALUE)
-                            .addComponent(jComboBox7, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGroup(panel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cbHour, 0, 105, Short.MAX_VALUE)
+                            .addComponent(cbId, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(820, 820, 820))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel12Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel13Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton7)
+                .addComponent(btnDelay)
                 .addGap(531, 531, 531))
         );
-        jPanel12Layout.setVerticalGroup(
-            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel12Layout.createSequentialGroup()
+        panel13Layout.setVerticalGroup(
+            panel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel13Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel47)
-                    .addComponent(jComboBox7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(panel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblId13)
+                    .addComponent(cbId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32)
-                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel46)
-                    .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(panel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblHours)
+                    .addComponent(cbHour, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32)
-                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel48)
-                    .addComponent(jComboBox8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(panel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblMinutes)
+                    .addComponent(cbMinute, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 307, Short.MAX_VALUE)
-                .addComponent(jButton7)
+                .addComponent(btnDelay)
                 .addGap(33, 33, 33))
         );
 
-        jTabbedPane1.addTab("Delay flight", jPanel12);
+        jTabbedPane1.addTab("Delay flight", panel13);
 
         panelRound1.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 41, 1150, 620));
 
@@ -1581,11 +1580,11 @@ public class AirportFrame extends javax.swing.JFrame {
         flight.addPassenger(passenger);
     }//GEN-LAST:event_btnAddActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void btnDelayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDelayActionPerformed
         // TODO add your handling code here:
-        String flightId = jComboBox7.getItemAt(jComboBox7.getSelectedIndex());
-        int hours = Integer.parseInt(jComboBox6.getItemAt(jComboBox6.getSelectedIndex()));
-        int minutes = Integer.parseInt(jComboBox8.getItemAt(jComboBox8.getSelectedIndex()));
+        String flightId = cbId.getItemAt(cbId.getSelectedIndex());
+        int hours = Integer.parseInt(cbHour.getItemAt(cbHour.getSelectedIndex()));
+        int minutes = Integer.parseInt(cbMinute.getItemAt(cbMinute.getSelectedIndex()));
 
         Flight flight = null;
         for (Flight f : this.flights) {
@@ -1595,9 +1594,9 @@ public class AirportFrame extends javax.swing.JFrame {
         }
 
         flight.delay(hours, minutes);
-    }//GEN-LAST:event_jButton7ActionPerformed
+    }//GEN-LAST:event_btnDelayActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnRefresh8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefresh8ActionPerformed
         // TODO add your handling code here:
         long passengerId = Long.parseLong(userSelect.getItemAt(userSelect.getSelectedIndex()));
 
@@ -1609,48 +1608,48 @@ public class AirportFrame extends javax.swing.JFrame {
         }
 
         ArrayList<Flight> flights = passenger.getFlights();
-        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        DefaultTableModel model = (DefaultTableModel) table8.getModel();
         model.setRowCount(0);
         for (Flight flight : flights) {
             model.addRow(new Object[]{flight.getId(), flight.getDepartureDate(), flight.calculateArrivalDate()});
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnRefresh8ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnRefresh9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefresh9ActionPerformed
         // TODO add your handling code here:
-        DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+        DefaultTableModel model = (DefaultTableModel) table9.getModel();
         model.setRowCount(0);
         for (Passenger passenger : this.passengers) {
             model.addRow(new Object[]{passenger.getId(), passenger.getFullname(), passenger.getBirthDate(), passenger.calculateAge(), passenger.generateFullPhone(), passenger.getCountry(), passenger.getNumFlights()});
         }
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btnRefresh9ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void btnRefresh10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefresh10ActionPerformed
         // TODO add your handling code here:
-        DefaultTableModel model = (DefaultTableModel) jTable3.getModel();
+        DefaultTableModel model = (DefaultTableModel) table10.getModel();
         model.setRowCount(0);
         for (Flight flight : this.flights) {
             model.addRow(new Object[]{flight.getId(), flight.getDepartureLocation().getAirportId(), flight.getArrivalLocation().getAirportId(), (flight.getScaleLocation() == null ? "-" : flight.getScaleLocation().getAirportId()), flight.getDepartureDate(), flight.calculateArrivalDate(), flight.getPlane().getId(), flight.getNumPassengers()});
         }
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_btnRefresh10ActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void btnRefresh11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefresh11ActionPerformed
         // TODO add your handling code here:
-        DefaultTableModel model = (DefaultTableModel) jTable4.getModel();
+        DefaultTableModel model = (DefaultTableModel) table11.getModel();
         model.setRowCount(0);
         for (Plane plane : this.planes) {
             model.addRow(new Object[]{plane.getId(), plane.getBrand(), plane.getModel(), plane.getMaxCapacity(), plane.getAirline(), plane.getNumFlights()});
         }
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_btnRefresh11ActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void btnRefresh12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefresh12ActionPerformed
         // TODO add your handling code here:
-        DefaultTableModel model = (DefaultTableModel) jTable5.getModel();
+        DefaultTableModel model = (DefaultTableModel) table12.getModel();
         model.setRowCount(0);
         for (Location location : this.locations) {
             model.addRow(new Object[]{location.getAirportId(), location.getAirportName(), location.getAirportCity(), location.getAirportCountry()});
         }
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_btnRefresh12ActionPerformed
 
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
         System.exit(0);
@@ -1708,43 +1707,24 @@ public class AirportFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnCreate;
     private javax.swing.JButton btnCreate4;
     private javax.swing.JButton btnCreate5;
+    private javax.swing.JButton btnDelay;
+    private javax.swing.JButton btnRefresh10;
+    private javax.swing.JButton btnRefresh11;
+    private javax.swing.JButton btnRefresh12;
+    private javax.swing.JButton btnRefresh8;
+    private javax.swing.JButton btnRefresh9;
     private javax.swing.JButton btnRegister;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JComboBox<String> cbFlight;
+    private javax.swing.JComboBox<String> cbHour;
+    private javax.swing.JComboBox<String> cbId;
     private javax.swing.JComboBox<String> cbLocation51;
     private javax.swing.JComboBox<String> cbLocation52;
     private javax.swing.JComboBox<String> cbLocation53;
+    private javax.swing.JComboBox<String> cbMinute;
     private javax.swing.JComboBox<String> cbPlane;
     private javax.swing.JButton jButton13;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JComboBox<String> jComboBox6;
-    private javax.swing.JComboBox<String> jComboBox7;
-    private javax.swing.JComboBox<String> jComboBox8;
-    private javax.swing.JLabel jLabel46;
-    private javax.swing.JLabel jLabel47;
-    private javax.swing.JLabel jLabel48;
-    private javax.swing.JPanel jPanel10;
-    private javax.swing.JPanel jPanel11;
-    private javax.swing.JPanel jPanel12;
-    private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable3;
-    private javax.swing.JTable jTable4;
-    private javax.swing.JTable jTable5;
     private javax.swing.JLabel lblAddSymbol;
     private javax.swing.JLabel lblAddSymbol5;
     private javax.swing.JLabel lblAirline;
@@ -1767,7 +1747,9 @@ public class AirportFrame extends javax.swing.JFrame {
     private javax.swing.JLabel lblFight;
     private javax.swing.JLabel lblFirstName;
     private javax.swing.JLabel lblFirstName6;
+    private javax.swing.JLabel lblHours;
     private javax.swing.JLabel lblI6;
+    private javax.swing.JLabel lblId13;
     private javax.swing.JLabel lblId2;
     private javax.swing.JLabel lblId3;
     private javax.swing.JLabel lblId5;
@@ -1775,6 +1757,7 @@ public class AirportFrame extends javax.swing.JFrame {
     private javax.swing.JLabel lblLastName;
     private javax.swing.JLabel lblLastName6;
     private javax.swing.JLabel lblMaxCap;
+    private javax.swing.JLabel lblMinutes;
     private javax.swing.JLabel lblModel;
     private javax.swing.JLabel lblPhone;
     private javax.swing.JLabel lblPhone6;
@@ -1791,15 +1774,31 @@ public class AirportFrame extends javax.swing.JFrame {
     private javax.swing.JLabel lblSeparator56;
     private javax.swing.JLabel lblSeparator61;
     private javax.swing.JPanel panel1;
+    private javax.swing.JPanel panel10;
+    private javax.swing.JPanel panel11;
+    private javax.swing.JPanel panel12;
+    private javax.swing.JPanel panel13;
     private javax.swing.JPanel panel2;
     private javax.swing.JPanel panel3;
     private javax.swing.JPanel panel4;
     private javax.swing.JPanel panel5;
     private javax.swing.JPanel panel6;
     private javax.swing.JPanel panel7;
+    private javax.swing.JPanel panel8;
+    private javax.swing.JPanel panel9;
     private airport.PanelRound panelRound1;
     private airport.PanelRound panelRound2;
     private airport.PanelRound panelRound3;
+    private javax.swing.JScrollPane scrollPane10;
+    private javax.swing.JScrollPane scrollPane11;
+    private javax.swing.JScrollPane scrollPane12;
+    private javax.swing.JScrollPane scrollPane8;
+    private javax.swing.JScrollPane scrollPane9;
+    private javax.swing.JTable table10;
+    private javax.swing.JTable table11;
+    private javax.swing.JTable table12;
+    private javax.swing.JTable table8;
+    private javax.swing.JTable table9;
     private javax.swing.JTextField txtAirline;
     private javax.swing.JTextField txtAirportCity;
     private javax.swing.JTextField txtAirportCountry;
