@@ -34,7 +34,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="airport.PanelRound" name="panelRound1">
+    <Container class="core.view.PanelRound" name="panelRound1">
       <Properties>
         <Property name="radius" type="int" value="40"/>
       </Properties>
@@ -43,7 +43,7 @@
         <Property name="useNullLayout" type="boolean" value="false"/>
       </Layout>
       <SubComponents>
-        <Container class="airport.PanelRound" name="panelRound2">
+        <Container class="core.view.PanelRound" name="panelRound2">
           <Events>
             <EventHandler event="mouseDragged" listener="java.awt.event.MouseMotionListener" parameters="java.awt.event.MouseEvent" handler="panelRound2MouseDragged"/>
             <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="panelRound2MousePressed"/>
@@ -1611,7 +1611,7 @@
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="btnAdd" min="-2" pref="120" max="-2" attributes="0"/>
+                          <Component id="btnAddFlight" min="-2" pref="120" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="509" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -1633,7 +1633,7 @@
                               <Component id="cbFlight" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="288" max="32767" attributes="0"/>
-                          <Component id="btnAdd" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="btnAddFlight" min="-2" pref="40" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -1679,7 +1679,7 @@
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                   </AuxValues>
                 </Component>
-                <Component class="javax.swing.JButton" name="btnAdd">
+                <Component class="javax.swing.JButton" name="btnAddFlight">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Yu Gothic UI" size="18" style="0"/>
@@ -1687,7 +1687,7 @@
                     <Property name="text" type="java.lang.String" value="Add"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAddActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAddFlightActionPerformed"/>
                   </Events>
                 </Component>
               </SubComponents>
@@ -2227,7 +2227,7 @@
             </Container>
           </SubComponents>
         </Container>
-        <Container class="airport.PanelRound" name="panelRound3">
+        <Container class="core.view.PanelRound" name="panelRound3">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="-2" y="660" width="1150" height="-1"/>

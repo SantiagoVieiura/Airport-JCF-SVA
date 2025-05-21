@@ -4,8 +4,12 @@
  */
 //Arreglar Pulls
 
-package airport;
+package core.view;
 
+import core.model.Flight;
+import core.model.Location;
+import core.model.Passenger;
+import core.model.Plane;
 import com.formdev.flatlaf.FlatDarkLaf;
 import java.awt.Color;
 import java.time.LocalDate;
@@ -99,8 +103,8 @@ public class AirportFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panelRound1 = new airport.PanelRound();
-        panelRound2 = new airport.PanelRound();
+        panelRound1 = new core.view.PanelRound();
+        panelRound2 = new core.view.PanelRound();
         jButton13 = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         panel1 = new javax.swing.JPanel();
@@ -208,7 +212,7 @@ public class AirportFrame extends javax.swing.JFrame {
         lblId7 = new javax.swing.JLabel();
         lblFight = new javax.swing.JLabel();
         cbFlight = new javax.swing.JComboBox<>();
-        btnAdd = new javax.swing.JButton();
+        btnAddFlight = new javax.swing.JButton();
         panel8 = new javax.swing.JPanel();
         scrollPane8 = new javax.swing.JScrollPane();
         table8 = new javax.swing.JTable();
@@ -237,7 +241,7 @@ public class AirportFrame extends javax.swing.JFrame {
         lblMinutes = new javax.swing.JLabel();
         cbMinute = new javax.swing.JComboBox<>();
         btnDelay = new javax.swing.JButton();
-        panelRound3 = new airport.PanelRound();
+        panelRound3 = new core.view.PanelRound();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -409,38 +413,38 @@ public class AirportFrame extends javax.swing.JFrame {
 
         txtId3.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         panel3.add(txtId3);
-        txtId3.setBounds(180, 93, 130, 31);
+        txtId3.setBounds(180, 93, 130, 29);
 
         lblBrand.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         lblBrand.setText("Brand:");
         panel3.add(lblBrand);
-        lblBrand.setBounds(53, 157, 50, 25);
+        lblBrand.setBounds(53, 157, 52, 25);
 
         txtBrand.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         panel3.add(txtBrand);
-        txtBrand.setBounds(180, 154, 130, 31);
+        txtBrand.setBounds(180, 154, 130, 29);
 
         txtModel.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         panel3.add(txtModel);
-        txtModel.setBounds(180, 213, 130, 31);
+        txtModel.setBounds(180, 213, 130, 29);
 
         lblModel.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         lblModel.setText("Model:");
         panel3.add(lblModel);
-        lblModel.setBounds(53, 216, 55, 25);
+        lblModel.setBounds(53, 216, 57, 25);
 
         txtMaxCap.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         panel3.add(txtMaxCap);
-        txtMaxCap.setBounds(180, 273, 130, 31);
+        txtMaxCap.setBounds(180, 273, 130, 29);
 
         lblMaxCap.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         lblMaxCap.setText("Max Capacity:");
         panel3.add(lblMaxCap);
-        lblMaxCap.setBounds(53, 276, 109, 25);
+        lblMaxCap.setBounds(53, 276, 114, 25);
 
         txtAirline.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         panel3.add(txtAirline);
-        txtAirline.setBounds(180, 333, 130, 31);
+        txtAirline.setBounds(180, 333, 130, 29);
 
         lblAirline.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         lblAirline.setText("Airline:");
@@ -944,11 +948,11 @@ public class AirportFrame extends javax.swing.JFrame {
         cbFlight.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         cbFlight.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Flight" }));
 
-        btnAdd.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        btnAdd.setText("Add");
-        btnAdd.addActionListener(new java.awt.event.ActionListener() {
+        btnAddFlight.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        btnAddFlight.setText("Add");
+        btnAddFlight.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddActionPerformed(evt);
+                btnAddFlightActionPerformed(evt);
             }
         });
 
@@ -968,7 +972,7 @@ public class AirportFrame extends javax.swing.JFrame {
                 .addContainerGap(829, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel7Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnAddFlight, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(509, 509, 509))
         );
         panel7Layout.setVerticalGroup(
@@ -985,7 +989,7 @@ public class AirportFrame extends javax.swing.JFrame {
                     .addComponent(lblFight)
                     .addComponent(cbFlight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 288, Short.MAX_VALUE)
-                .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnAddFlight, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(85, 85, 85))
         );
 
@@ -1558,7 +1562,7 @@ public class AirportFrame extends javax.swing.JFrame {
         passenger.setCountry(country);
     }//GEN-LAST:event_btnUpdateActionPerformed
 
-    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+    private void btnAddFlightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddFlightActionPerformed
         // TODO add your handling code here:
         long passengerId = Long.parseLong(txtId7.getText());
         String flightId = cbFlight.getItemAt(cbFlight.getSelectedIndex());
@@ -1567,7 +1571,7 @@ public class AirportFrame extends javax.swing.JFrame {
         Flight flight = null;
 
         for (Passenger p : this.passengers) {
-            if (p.getId() == passengerId) {
+            if (p.getId() == passengerId) { 
                 passenger = p;
             }
         }
@@ -1580,7 +1584,7 @@ public class AirportFrame extends javax.swing.JFrame {
 
         passenger.addFlight(flight);
         flight.addPassenger(passenger);
-    }//GEN-LAST:event_btnAddActionPerformed
+    }//GEN-LAST:event_btnAddFlightActionPerformed
 
     private void btnDelayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDelayActionPerformed
         // TODO add your handling code here:
@@ -1705,7 +1709,7 @@ public class AirportFrame extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> MONTH4;
     private javax.swing.JComboBox<String> MONTH5;
     private javax.swing.JRadioButton administrator;
-    private javax.swing.JButton btnAdd;
+    private javax.swing.JButton btnAddFlight;
     private javax.swing.JButton btnCreate;
     private javax.swing.JButton btnCreate4;
     private javax.swing.JButton btnCreate5;
@@ -1788,9 +1792,9 @@ public class AirportFrame extends javax.swing.JFrame {
     private javax.swing.JPanel panel7;
     private javax.swing.JPanel panel8;
     private javax.swing.JPanel panel9;
-    private airport.PanelRound panelRound1;
-    private airport.PanelRound panelRound2;
-    private airport.PanelRound panelRound3;
+    private core.view.PanelRound panelRound1;
+    private core.view.PanelRound panelRound2;
+    private core.view.PanelRound panelRound3;
     private javax.swing.JScrollPane scrollPane10;
     private javax.swing.JScrollPane scrollPane11;
     private javax.swing.JScrollPane scrollPane12;
