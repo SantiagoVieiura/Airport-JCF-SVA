@@ -16,6 +16,15 @@ public class Storage {
     private ArrayList<Location> locations;
     private ArrayList<Flight> flights;
 
+    public Storage() {
+        this.passengers = new ArrayList<>();
+        this.planes = new ArrayList<>();
+        this.locations = new ArrayList<>();
+        this.flights = new ArrayList<>();
+    }
+    
+    
+
     public ArrayList<Passenger> getPassengers() {
         return passengers;
     }

@@ -12,6 +12,7 @@ import core.model.Passenger;
 import core.model.Plane;
 import com.formdev.flatlaf.FlatDarkLaf;
 import core.controller.AirportController;
+import core.controller.PassengerController;
 import core.controller.utils.Response;
 import core.controller.utils.Status;
 import core.model.Storage;
@@ -39,9 +40,9 @@ public class AirportFrame extends javax.swing.JFrame {
     private ArrayList<Flight> flights;
     
     
-    public Storage storage= new  Storage();
-    AirportController control = new AirportController();
-    
+    public final Storage storage;
+    private AirportController control;
+    private PassengerController passenger;
     
     public AirportFrame() {
         initComponents();
@@ -59,6 +60,10 @@ public class AirportFrame extends javax.swing.JFrame {
         this.generateHours();
         this.generateMinutes();
         this.blockPanels();
+        
+        this.storage = new  Storage();
+        this.control = new AirportController(storage);
+        this.passenger = new PassengerController(storage);
     }
 
     private void blockPanels() {
@@ -1458,7 +1463,8 @@ public class AirportFrame extends javax.swing.JFrame {
         String phone = txtPhoneNumber.getText();
         String country = txtCountry.getText();
         
-        Response response = control.registerPassenger(id, firstname, lastname, day, month, year, phoneCode, phone, country);
+        
+        Response response = passenger.registerPassenger(id, firstname, lastname, day, month, year, phoneCode, phone, country);
         if (Status.CREATED == response.getStatus()){
             this.userSelect.addItem("" + id);
             JOptionPane.showMessageDialog(null, response.getMessage(), "Registro exitoso", JOptionPane.INFORMATION_MESSAGE);
