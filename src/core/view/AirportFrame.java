@@ -12,7 +12,6 @@ import core.model.Passenger;
 import core.model.Plane;
 import com.formdev.flatlaf.FlatDarkLaf;
 import core.controller.AirportController;
-import core.controller.PassengerController;
 import core.model.Storage;
 import java.awt.Color;
 import java.time.LocalDate;
@@ -38,8 +37,7 @@ public class AirportFrame extends javax.swing.JFrame {
     
     
     public Storage storage= new  Storage();
-    AirportController airportController = new AirportController();
-    PassengerController passenger = new  PassengerController();
+    AirportController control = new AirportController();
     
     
     public AirportFrame() {
@@ -1456,11 +1454,10 @@ public class AirportFrame extends javax.swing.JFrame {
         int phoneCode = Integer.parseInt(txtPrefix.getText());
         long phone = Long.parseLong(txtPhoneNumber.getText());
         String country = txtCountry.getText();
-
+        
+        control.registerPassenger(txtId2.getText(), firstname, lastname, DAY.getItemAt(DAY.getSelectedIndex()), MONTH.getItemAt(MONTH.getSelectedIndex()), txtBirthdate.getText(), txtPrefix.getText(), txtPhoneNumber.getText(), country);
         LocalDate birthDate = LocalDate.of(year, month, day);
         
-        
-        passenger.registerPassenger(new Passenger(id, firstname, lastname, birthDate, phoneCode, phone, country));
         this.passengers.add(new Passenger(id, firstname, lastname, birthDate, phoneCode, phone, country));
         this.userSelect.addItem("" + id);
     }//GEN-LAST:event_btnRegisterActionPerformed
