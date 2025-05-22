@@ -1,5 +1,7 @@
 package core.controller;
 
+import core.controller.utils.Response;
+import core.controller.utils.Status;
 import core.model.Passenger;
 import core.model.Storage;
 import java.time.LocalDate;
@@ -9,119 +11,62 @@ public class AirportController {
 
     private Storage storage = new Storage();
 
-    public void registerPassenger(String idSTR, String firstname, String lastname, String daySTR, String monthSTR, String yearSTR, String phoneCodeSTR, String phoneSTR, String country) {
+    public Response registerPassenger(String idSTR, String firstname, String lastname, String daySTR, String monthSTR, String yearSTR, String phoneCodeSTR, String phoneSTR, String country) {
         StringBuilder errors = new StringBuilder();
         boolean valid;
 
-        if (noNull(idSTR, firstname, lastname, daySTR, monthSTR, yearSTR, phoneCodeSTR, phoneSTR, country)) {
-            long id = Long.parseLong(idSTR);
-            int year = Integer.parseInt(yearSTR);
-            int month = Integer.parseInt(monthSTR);
-            int day = Integer.parseInt(daySTR);
-            int phoneCode = Integer.parseInt(phoneCodeSTR);
-            long phone = Long.parseLong(phoneSTR);
-
-            valid = validateDate(day, month, year);
-            if (!valid){
-                errors.append("Fecha inválida.\n");
+        try{
+            long id, phone;
+            int phoneCode, year, month, day;
+            
+            if (firstname.isEmpty() || lastname.isEmpty() || country.isEmpty() || idSTR.isEmpty() || daySTR.isEmpty() || monthSTR.isEmpty() || yearSTR.isEmpty() || phoneCodeSTR.isEmpty() || phoneSTR.isEmpty()) 
+                return new Response("No text field should be empty", Status.BAD_REQUEST);
+            
+            try {
+                id = Long.parseLong(idSTR);
+                if (id < 0 || String.valueOf(id).length() > 15) 
+                    return new Response("ID must be at least 0 and less than 15 digits", Status.BAD_REQUEST);
+            } catch (NumberFormatException e) {
+                return new Response("ID must be numeric", Status.BAD_REQUEST);
+            }
+            
+            for (Passenger p : storage.getPassengers()) {
+                if (p.getId() == id)
+                    return new Response("Passenger ID already exists", Status.BAD_REQUEST);
+            }
+            
+            try {
+                phoneCode = Integer.parseInt(phoneCodeSTR);
+                if (phoneCode < 0 || String.valueOf(phoneCode).length() > 3) 
+                    return new Response("Phone code must be ≥ 0 and ≤ 3 digits", Status.BAD_REQUEST);
+            } catch (NumberFormatException e) {
+                return new Response("Phone code must be numeric", Status.BAD_REQUEST);
             }
 
-            for (Passenger passenger : storage.getPassengers()) {
-                if (passenger.getId() == id && valid) {
-                    errors.append("ID repetido.\n");
-                    valid = false;
-                }
+            try {
+                phone = Long.parseLong(phoneSTR);
+                if (phone < 0 || String.valueOf(phone).length() > 11) 
+                    return new Response("Phone number must be ≥ 0 and ≤ 11 digits", Status.BAD_REQUEST);
+            } catch (NumberFormatException e) {
+                return new Response("Phone must be numeric", Status.BAD_REQUEST);
             }
-
-            if (digits(id, 15, 0)){
-                errors.append("ID inválido (demasiados dígitos o negativo).\n");
-                valid = false;
+            
+            try {
+                day = Integer.parseInt(daySTR);
+                month = Integer.parseInt(monthSTR);
+                year = Integer.parseInt(yearSTR);
+                if (year < 1910 || year > 2024) 
+                    return new Response("Invalid birth year", Status.BAD_REQUEST);
+                LocalDate date = LocalDate.of(year, month, day);
+            } catch (Exception e) {
+                return new Response("Invalid birthdate", Status.BAD_REQUEST);
             }
-            if (digits(phoneCode, 3, 0)){
-                errors.append("Código telefónico inválido (demasiados dígitos o negativo).\n");
-                valid = false;
-            }
-            if (digits(phone, 11, 0)){
-                errors.append("Número de teléfono inválido (demasiados dígitos o negativo).\n");
-                valid = false;
-            }
-
-            if (valid) {
-                LocalDate birthDate = LocalDate.of(year, month, day);
-                storage.getPassengers().add(new Passenger(id, firstname, lastname, birthDate, phoneCode, phone, country));
-            }else{
-                JOptionPane.showMessageDialog(null, errors.toString(), "Advertencia", JOptionPane.WARNING_MESSAGE);
-            }
-        }else{
-            JOptionPane.showMessageDialog(null, "Hay campos por llenar", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            
+            Passenger newPassenger = new Passenger(id, firstname, lastname, LocalDate.of(year, month, day), phoneCode, phone, country);
+            storage.getPassengers().add(newPassenger);
+            return new Response("Passenger created successfully", Status.CREATED);
+        }catch (Exception ex){
+            return new Response("Unexpected error", Status.INTERNAL_SERVER_ERROR);
         }
-    }
-
-    public static boolean digits(long id, int dig, int min) {
-        if (id < 0) 
-            return true;
-
-        long temp = id;
-        int counter = 0;
-
-        if (temp == 0) 
-            counter = 1;
-        else {
-            while (temp != 0) {
-                counter++;
-                temp /= 10;
-            }
-        }
-        return (counter > dig) || (id < min);
-    }
-
-    public static boolean noNull(String id, String firstname, String lastname, String day, String month, String year, String phoneCode, String phone, String country) {
-        if (isEmpty(id) || isEmpty(firstname) || isEmpty(lastname) || isEmpty(day) ||
-            isEmpty(month) || isEmpty(year) || isEmpty(phoneCode) || isEmpty(phone) || isEmpty(country)) 
-            return false;
-
-        if (!isNumeric(id) || !isNumeric(day) || !isNumeric(month) || !isNumeric(year) || !isNumeric(phoneCode) || !isNumeric(phone)) 
-            return false;
-
-
-        return true;
-    }
-
-    private static boolean isEmpty(String s) {
-        return s == null || s.trim().isEmpty();
-    }
-
-    private static boolean isNumeric(String s) {
-        return s.matches("\\d+");
-    }
-
-    public static boolean validateDate(int day, int month, int year) {
-        boolean validDate = true;
-
-        if (year < 1910 || year > 2024) 
-            validDate = false;
-        else if (month < 1 || month > 12)
-            validDate = false;
-        else if (day < 1 || day > 31)
-            validDate = false;
-        else {
-            if (month == 2) {
-
-                if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) {
-                    if (day > 29) 
-                        validDate = false;
-                } else {
-                    if (day > 28) 
-                        validDate = false;
-                }
-            } else if (month == 4 || month == 6 || month == 9 || month == 11) {
-                if (day > 30) 
-                    validDate = false;
-            }
-        }
-        if (!validDate)
-            JOptionPane.showMessageDialog(null, "Fecha Invalida", "Advertencia", JOptionPane.WARNING_MESSAGE);
-        
-        return validDate;
     }
 }
