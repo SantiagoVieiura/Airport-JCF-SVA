@@ -172,7 +172,7 @@ public class AirportFrame extends javax.swing.JFrame {
         lblAirportLatit = new javax.swing.JLabel();
         lblAirportLong = new javax.swing.JLabel();
         txtAirportLong = new javax.swing.JTextField();
-        btnCreate4 = new javax.swing.JButton();
+        btnCreateAirport = new javax.swing.JButton();
         panel5 = new javax.swing.JPanel();
         lblId5 = new javax.swing.JLabel();
         txtId5 = new javax.swing.JTextField();
@@ -428,38 +428,38 @@ public class AirportFrame extends javax.swing.JFrame {
 
         txtId3.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         panel3.add(txtId3);
-        txtId3.setBounds(180, 93, 130, 29);
+        txtId3.setBounds(180, 93, 130, 31);
 
         lblBrand.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         lblBrand.setText("Brand:");
         panel3.add(lblBrand);
-        lblBrand.setBounds(53, 157, 52, 25);
+        lblBrand.setBounds(53, 157, 50, 25);
 
         txtBrand.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         panel3.add(txtBrand);
-        txtBrand.setBounds(180, 154, 130, 29);
+        txtBrand.setBounds(180, 154, 130, 31);
 
         txtModel.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         panel3.add(txtModel);
-        txtModel.setBounds(180, 213, 130, 29);
+        txtModel.setBounds(180, 213, 130, 31);
 
         lblModel.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         lblModel.setText("Model:");
         panel3.add(lblModel);
-        lblModel.setBounds(53, 216, 57, 25);
+        lblModel.setBounds(53, 216, 55, 25);
 
         txtMaxCap.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         panel3.add(txtMaxCap);
-        txtMaxCap.setBounds(180, 273, 130, 29);
+        txtMaxCap.setBounds(180, 273, 130, 31);
 
         lblMaxCap.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         lblMaxCap.setText("Max Capacity:");
         panel3.add(lblMaxCap);
-        lblMaxCap.setBounds(53, 276, 114, 25);
+        lblMaxCap.setBounds(53, 276, 109, 25);
 
         txtAirline.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         panel3.add(txtAirline);
-        txtAirline.setBounds(180, 333, 130, 29);
+        txtAirline.setBounds(180, 333, 130, 31);
 
         lblAirline.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         lblAirline.setText("Airline:");
@@ -482,6 +482,11 @@ public class AirportFrame extends javax.swing.JFrame {
         lblAirpotId.setText("Airport ID:");
 
         txtAirportId.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        txtAirportId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAirportIdActionPerformed(evt);
+            }
+        });
 
         lblAirpotName.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         lblAirpotName.setText("Airport name:");
@@ -508,11 +513,11 @@ public class AirportFrame extends javax.swing.JFrame {
 
         txtAirportLong.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
 
-        btnCreate4.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        btnCreate4.setText("Create");
-        btnCreate4.addActionListener(new java.awt.event.ActionListener() {
+        btnCreateAirport.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        btnCreateAirport.setText("Create");
+        btnCreateAirport.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCreate4ActionPerformed(evt);
+                btnCreateAirportActionPerformed(evt);
             }
         });
 
@@ -541,7 +546,7 @@ public class AirportFrame extends javax.swing.JFrame {
                             .addComponent(txtAirportLatid, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(panel4Layout.createSequentialGroup()
                         .addGap(515, 515, 515)
-                        .addComponent(btnCreate4, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnCreateAirport, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(515, 515, 515))
         );
         panel4Layout.setVerticalGroup(
@@ -574,7 +579,7 @@ public class AirportFrame extends javax.swing.JFrame {
                     .addComponent(lblAirportLong)
                     .addComponent(txtAirportLong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
-                .addComponent(btnCreate4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnCreateAirport, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(47, 47, 47))
         );
 
@@ -1494,21 +1499,32 @@ public class AirportFrame extends javax.swing.JFrame {
         this.cbPlane.addItem(id);
     }//GEN-LAST:event_btnCreateActionPerformed
 
-    private void btnCreate4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreate4ActionPerformed
-        // TODO add your handling code here:
+    private void btnCreateAirportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateAirportActionPerformed
         String id = txtAirportId.getText();
         String name = txtAirportName.getText();
         String city = txtAirportCity.getText();
         String country = txtAirportCountry.getText();
-        double latitude = Double.parseDouble(txtAirportLatid.getText());
-        double longitude = Double.parseDouble(txtAirportLong.getText());
+        String latitude = txtAirportLatid.getText();
+        String longitude = txtAirportLong.getText();
 
-        this.locations.add(new Location(id, name, city, country, latitude, longitude));
+
+        Response response = control.registerAirport(id, name, city, country, latitude, longitude);
+        if (Status.CREATED == response.getStatus()){
+            JOptionPane.showMessageDialog(null, response.getMessage(), "Registro exitoso", JOptionPane.INFORMATION_MESSAGE);
+            txtAirportId.setText("");
+            txtAirportName.setText("");
+            txtAirportCity.setText("");
+            txtAirportCountry.setText("");
+            txtAirportLatid.setText("");
+            txtAirportLong.setText("");
+        }
+        else
+            JOptionPane.showMessageDialog(null, response.getMessage(), "Error de registro", JOptionPane.ERROR_MESSAGE);
 
         this.cbLocation51.addItem(id);
         this.cbLocation52.addItem(id);
         this.cbLocation53.addItem(id);
-    }//GEN-LAST:event_btnCreate4ActionPerformed
+    }//GEN-LAST:event_btnCreateAirportActionPerformed
 
     private void btnCreate5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreate5ActionPerformed
         // TODO add your handling code here:
@@ -1703,6 +1719,10 @@ public class AirportFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_userSelectActionPerformed
 
+    private void txtAirportIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAirportIdActionPerformed
+        
+    }//GEN-LAST:event_txtAirportIdActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1738,8 +1758,8 @@ public class AirportFrame extends javax.swing.JFrame {
     private javax.swing.JRadioButton administrator;
     private javax.swing.JButton btnAddFlight;
     private javax.swing.JButton btnCreate;
-    private javax.swing.JButton btnCreate4;
     private javax.swing.JButton btnCreate5;
+    private javax.swing.JButton btnCreateAirport;
     private javax.swing.JButton btnDelay;
     private javax.swing.JButton btnRefresh10;
     private javax.swing.JButton btnRefresh11;

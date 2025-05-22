@@ -45,7 +45,7 @@ public class PassengerController {
             try {
                 phoneCode = Integer.parseInt(phoneCodeSTR);
                 if (phoneCode < 0 || String.valueOf(phoneCode).length() > 3) 
-                    return new Response("Phone code must be ≥ 0 and ≤ 3 digits", Status.BAD_REQUEST);
+                    return new Response("Phone code must be at least 0 and less than 3 digits", Status.BAD_REQUEST);
             } catch (NumberFormatException e) {
                 return new Response("Phone code must be numeric", Status.BAD_REQUEST);
             }
@@ -53,7 +53,7 @@ public class PassengerController {
             try {
                 phone = Long.parseLong(phoneSTR);
                 if (phone < 0 || String.valueOf(phone).length() > 11) 
-                    return new Response("Phone number must be ≥ 0 and ≤ 11 digits", Status.BAD_REQUEST);
+                    return new Response("Phone number must be at least 0 and les than 11 digits", Status.BAD_REQUEST);
             } catch (NumberFormatException e) {
                 return new Response("Phone must be numeric", Status.BAD_REQUEST);
             }
@@ -71,7 +71,6 @@ public class PassengerController {
             
             Passenger newPassenger = new Passenger(id, firstname, lastname, LocalDate.of(year, month, day), phoneCode, phone, country);
             storage.getPassengers().add(newPassenger);
-            System.out.println("Se añadio el pasajero");
             return new Response("Passenger created successfully", Status.CREATED);
         }catch (Exception ex){
             return new Response("Unexpected error", Status.INTERNAL_SERVER_ERROR);
