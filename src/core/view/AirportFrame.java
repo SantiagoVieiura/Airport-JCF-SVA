@@ -11,6 +11,9 @@ import core.model.Location;
 import core.model.Passenger;
 import core.model.Plane;
 import com.formdev.flatlaf.FlatDarkLaf;
+import core.controller.AirportController;
+import core.controller.PassengerController;
+import core.model.Storage;
 import java.awt.Color;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -32,7 +35,13 @@ public class AirportFrame extends javax.swing.JFrame {
     private ArrayList<Plane> planes;
     private ArrayList<Location> locations;
     private ArrayList<Flight> flights;
-
+    
+    
+    public Storage storage= new  Storage();
+    AirportController airportController = new AirportController();
+    PassengerController passenger = new  PassengerController();
+    
+    
     public AirportFrame() {
         initComponents();
 
@@ -1449,7 +1458,9 @@ public class AirportFrame extends javax.swing.JFrame {
         String country = txtCountry.getText();
 
         LocalDate birthDate = LocalDate.of(year, month, day);
-
+        
+        
+        passenger.registerPassenger(new Passenger(id, firstname, lastname, birthDate, phoneCode, phone, country));
         this.passengers.add(new Passenger(id, firstname, lastname, birthDate, phoneCode, phone, country));
         this.userSelect.addItem("" + id);
     }//GEN-LAST:event_btnRegisterActionPerformed
