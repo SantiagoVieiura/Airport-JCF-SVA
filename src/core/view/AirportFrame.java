@@ -12,11 +12,14 @@ import core.model.Passenger;
 import core.model.Plane;
 import com.formdev.flatlaf.FlatDarkLaf;
 import core.controller.AirportController;
+import core.controller.utils.Response;
+import core.controller.utils.Status;
 import core.model.Storage;
 import java.awt.Color;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 
@@ -1445,21 +1448,31 @@ public class AirportFrame extends javax.swing.JFrame {
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
         // TODO add your handling code here:
-        long id = Long.parseLong(txtId2.getText());
+        String id = txtId2.getText();
         String firstname = txtFirstName.getText();
         String lastname = txtLastName.getText();
-        int year = Integer.parseInt(txtBirthdate.getText());
-        int month = Integer.parseInt(MONTH.getItemAt(MONTH.getSelectedIndex()));
-        int day = Integer.parseInt(DAY.getItemAt(DAY.getSelectedIndex()));
-        int phoneCode = Integer.parseInt(txtPrefix.getText());
-        long phone = Long.parseLong(txtPhoneNumber.getText());
+        String year = txtBirthdate.getText();
+        String month = MONTH.getItemAt(MONTH.getSelectedIndex());
+        String day = String.valueOf(DAY.getItemAt(DAY.getSelectedIndex()));
+        String phoneCode = txtPrefix.getText();
+        String phone = txtPhoneNumber.getText();
         String country = txtCountry.getText();
         
-        control.registerPassenger(txtId2.getText(), firstname, lastname, DAY.getItemAt(DAY.getSelectedIndex()), MONTH.getItemAt(MONTH.getSelectedIndex()), txtBirthdate.getText(), txtPrefix.getText(), txtPhoneNumber.getText(), country);
-        LocalDate birthDate = LocalDate.of(year, month, day);
-        
-        this.passengers.add(new Passenger(id, firstname, lastname, birthDate, phoneCode, phone, country));
-        this.userSelect.addItem("" + id);
+        Response response = control.registerPassenger(id, firstname, lastname, day, month, year, phoneCode, phone, country);
+        if (Status.CREATED == response.getStatus()){
+            this.userSelect.addItem("" + id);
+            JOptionPane.showMessageDialog(null, response.getMessage(), "Registro exitoso", JOptionPane.INFORMATION_MESSAGE);
+            txtId2.setText("");
+            txtFirstName.setText("");
+            txtLastName.setText("");
+            txtBirthdate.setText("");
+            txtPrefix.setText("");
+            txtPhoneNumber.setText("");
+            txtCountry.setText("");
+            DAY.setSelectedIndex(1);
+            MONTH.setSelectedIndex(1);
+        }else
+            JOptionPane.showMessageDialog(null, response.getMessage(), "Error de registro", JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_btnRegisterActionPerformed
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
