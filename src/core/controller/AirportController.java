@@ -5,16 +5,12 @@ import core.controller.utils.Status;
 import core.model.Passenger;
 import core.model.Storage;
 import java.time.LocalDate;
-import javax.swing.JOptionPane;
 
 public class AirportController {
 
-    private Storage storage = new Storage();
+    private final Storage storage = new Storage();
 
     public Response registerPassenger(String idSTR, String firstname, String lastname, String daySTR, String monthSTR, String yearSTR, String phoneCodeSTR, String phoneSTR, String country) {
-        StringBuilder errors = new StringBuilder();
-        boolean valid;
-
         try{
             long id, phone;
             int phoneCode, year, month, day;
