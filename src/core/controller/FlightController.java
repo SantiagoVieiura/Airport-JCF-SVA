@@ -61,9 +61,9 @@ public class FlightController {
             
             if (scale == null || scaleLocationId.equals(departureLocationId) || scaleLocationId.equals(arrivalLocationId)) {
                 scale = null;
-                if (!hoursDurationsScaleS.equals("0") || !minutesDurationsScaleS.equals("0")) {
+                if (! (hoursDurationsScaleS.equals("0") || hoursDurationsScaleS.equals("Hour")) || ! (minutesDurationsScaleS.equals("0") || minutesDurationsScaleS.equals("Minute"))) {
                     return new Response("Scale duration must be 00:00 when no valid scale location is selected", Status.BAD_REQUEST);
-                }
+}
                 hoursDurationsScale = 0;
                 minutesDurationsScale = 0;
             } else {
