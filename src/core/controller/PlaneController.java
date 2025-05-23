@@ -21,7 +21,7 @@ public class PlaneController {
         this.storage = storage;
     }
     
-    private Response registerPlane(String id, String brand, String model, String maxCapacityS, String airline){
+    public Response registerPlane(String id, String brand, String model, String maxCapacityS, String airline){
         try{
             int maxCapacity;
             

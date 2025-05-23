@@ -1491,10 +1491,9 @@ public class AirportFrame extends javax.swing.JFrame {
         String id = txtId3.getText();
         String brand = txtBrand.getText();
         String model = txtModel.getText();
-        int maxCapacity = Integer.parseInt(txtMaxCap.getText());
+        String maxCapacity = txtMaxCap.getText();
         String airline = txtAirline.getText();
 
-        this.planes.add(new Plane(id, brand, model, maxCapacity, airline));
 
         this.cbPlane.addItem(id);
     }//GEN-LAST:event_btnCreatePlaneActionPerformed
