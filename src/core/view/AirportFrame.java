@@ -13,6 +13,7 @@ import core.model.Plane;
 import com.formdev.flatlaf.FlatDarkLaf;
 import core.controller.AirportController;
 import core.controller.PassengerController;
+import core.controller.PlaneController;
 import core.controller.utils.Response;
 import core.controller.utils.Status;
 import core.model.Storage;
@@ -43,6 +44,7 @@ public class AirportFrame extends javax.swing.JFrame {
     public final Storage storage;
     private AirportController control;
     private PassengerController passenger;
+    private PlaneController planeC;
     
     public AirportFrame() {
         initComponents();
@@ -64,6 +66,7 @@ public class AirportFrame extends javax.swing.JFrame {
         this.storage = new  Storage();
         this.control = new AirportController(storage);
         this.passenger = new PassengerController(storage);
+        this.planeC = new PlaneController(storage);
     }
 
     private void blockPanels() {
@@ -1494,6 +1497,11 @@ public class AirportFrame extends javax.swing.JFrame {
         String maxCapacity = txtMaxCap.getText();
         String airline = txtAirline.getText();
 
+<<<<<<< HEAD
+=======
+        Response response = planeC.registerPlane(id, brand, model, maxCapacity, airline);
+        
+>>>>>>> JC
 
         this.cbPlane.addItem(id);
     }//GEN-LAST:event_btnCreatePlaneActionPerformed
