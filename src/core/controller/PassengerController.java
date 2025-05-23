@@ -10,10 +10,6 @@ import core.model.Passenger;
 import core.model.Storage;
 import java.time.LocalDate;
 
-/**
- *
- * @author sebas
- */
 public class PassengerController {
     private Storage storage;
 

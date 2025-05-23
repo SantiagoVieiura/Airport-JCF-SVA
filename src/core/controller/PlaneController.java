@@ -9,10 +9,6 @@ import core.controller.utils.Status;
 import core.model.Plane;
 import core.model.Storage;
 
-/**
- *
- * @author sebas
- */
 public class PlaneController {
     
     private final Storage storage;
