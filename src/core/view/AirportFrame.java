@@ -158,7 +158,7 @@ public class AirportFrame extends javax.swing.JFrame {
         lblMaxCap = new javax.swing.JLabel();
         txtAirline = new javax.swing.JTextField();
         lblAirline = new javax.swing.JLabel();
-        btnCreate = new javax.swing.JButton();
+        btnCreatePlane = new javax.swing.JButton();
         panel4 = new javax.swing.JPanel();
         lblAirpotId = new javax.swing.JLabel();
         txtAirportId = new javax.swing.JTextField();
@@ -466,15 +466,15 @@ public class AirportFrame extends javax.swing.JFrame {
         panel3.add(lblAirline);
         lblAirline.setBounds(53, 336, 70, 25);
 
-        btnCreate.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        btnCreate.setText("Create");
-        btnCreate.addActionListener(new java.awt.event.ActionListener() {
+        btnCreatePlane.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        btnCreatePlane.setText("Create");
+        btnCreatePlane.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCreateActionPerformed(evt);
+                btnCreatePlaneActionPerformed(evt);
             }
         });
-        panel3.add(btnCreate);
-        btnCreate.setBounds(490, 480, 120, 40);
+        panel3.add(btnCreatePlane);
+        btnCreatePlane.setBounds(490, 480, 120, 40);
 
         jTabbedPane1.addTab("Airplane registration", panel3);
 
@@ -1486,7 +1486,7 @@ public class AirportFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, response.getMessage(), "Error de registro", JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_btnRegisterActionPerformed
 
-    private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
+    private void btnCreatePlaneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreatePlaneActionPerformed
         // TODO add your handling code here:
         String id = txtId3.getText();
         String brand = txtBrand.getText();
@@ -1497,7 +1497,7 @@ public class AirportFrame extends javax.swing.JFrame {
         this.planes.add(new Plane(id, brand, model, maxCapacity, airline));
 
         this.cbPlane.addItem(id);
-    }//GEN-LAST:event_btnCreateActionPerformed
+    }//GEN-LAST:event_btnCreatePlaneActionPerformed
 
     private void btnCreateAirportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateAirportActionPerformed
         String id = txtAirportId.getText();
@@ -1757,9 +1757,9 @@ public class AirportFrame extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> MONTH5;
     private javax.swing.JRadioButton administrator;
     private javax.swing.JButton btnAddFlight;
-    private javax.swing.JButton btnCreate;
     private javax.swing.JButton btnCreate5;
     private javax.swing.JButton btnCreateAirport;
+    private javax.swing.JButton btnCreatePlane;
     private javax.swing.JButton btnDelay;
     private javax.swing.JButton btnRefresh10;
     private javax.swing.JButton btnRefresh11;

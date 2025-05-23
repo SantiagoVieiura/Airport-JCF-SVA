@@ -69,8 +69,8 @@ public class PassengerController {
                 return new Response("Invalid birthdate", Status.BAD_REQUEST);
             }
             
-            Passenger newPassenger = new Passenger(id, firstname, lastname, LocalDate.of(year, month, day), phoneCode, phone, country);
-            storage.getPassengers().add(newPassenger);
+            Passenger passenger = new Passenger(id, firstname, lastname, LocalDate.of(year, month, day), phoneCode, phone, country);
+            storage.getPassengers().add(passenger);
             return new Response("Passenger created successfully", Status.CREATED);
         }catch (Exception ex){
             return new Response("Unexpected error", Status.INTERNAL_SERVER_ERROR);
