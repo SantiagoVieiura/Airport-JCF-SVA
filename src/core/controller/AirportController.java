@@ -3,7 +3,7 @@ package core.controller;
 import core.controller.utils.Response;
 import core.controller.utils.Status;
 import core.model.Location;
-import core.model.Storage;
+import core.model.storage.Storage;
 
 
 public class AirportController {

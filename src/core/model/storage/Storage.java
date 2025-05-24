@@ -2,8 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package core.model;
+package core.model.storage;
 
+import core.model.Flight;
+import core.model.Location;
+import core.model.Passenger;
+import core.model.Plane;
 import java.util.ArrayList;
 
 /**
@@ -56,6 +60,4 @@ public class Storage {
     public void setFlights(ArrayList<Flight> flights) {
         this.flights = flights;
     }
-    
-    
 }

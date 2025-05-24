@@ -17,10 +17,8 @@ import core.controller.PassengerController;
 import core.controller.PlaneController;
 import core.controller.utils.Response;
 import core.controller.utils.Status;
-import core.model.Storage;
+import core.model.storage.Storage;
 import java.awt.Color;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
@@ -220,7 +218,7 @@ public class AirportFrame extends javax.swing.JFrame {
         txtBirthdate6 = new javax.swing.JTextField();
         MONTH5 = new javax.swing.JComboBox<>();
         DAY5 = new javax.swing.JComboBox<>();
-        txtPhoneNumer6 = new javax.swing.JTextField();
+        txtPhoneNumber6 = new javax.swing.JTextField();
         lblSeparator61 = new javax.swing.JLabel();
         txtPrefix6 = new javax.swing.JTextField();
         lblAddSymbol5 = new javax.swing.JLabel();
@@ -824,9 +822,12 @@ public class AirportFrame extends javax.swing.JFrame {
         lblI6.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         lblI6.setText("ID:");
 
-        txtId6.setEditable(false);
         txtId6.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        txtId6.setEnabled(false);
+        txtId6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtId6ActionPerformed(evt);
+            }
+        });
 
         lblFirstName6.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         lblFirstName6.setText("First Name:");
@@ -849,7 +850,7 @@ public class AirportFrame extends javax.swing.JFrame {
         DAY5.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         DAY5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Day" }));
 
-        txtPhoneNumer6.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        txtPhoneNumber6.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
 
         lblSeparator61.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         lblSeparator61.setText("-");
@@ -913,7 +914,7 @@ public class AirportFrame extends javax.swing.JFrame {
                                 .addGap(20, 20, 20)
                                 .addComponent(lblSeparator61, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, 0)
-                                .addComponent(txtPhoneNumer6, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtPhoneNumber6, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(panel6Layout.createSequentialGroup()
                                 .addComponent(lblCountry6)
                                 .addGap(63, 63, 63)
@@ -950,7 +951,7 @@ public class AirportFrame extends javax.swing.JFrame {
                     .addComponent(lblAddSymbol5)
                     .addComponent(txtPrefix6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblSeparator61)
-                    .addComponent(txtPhoneNumer6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPhoneNumber6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
                 .addGroup(panel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblCountry6)
@@ -963,7 +964,6 @@ public class AirportFrame extends javax.swing.JFrame {
         jTabbedPane1.addTab("Update info", panel6);
 
         txtId7.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        txtId7.setEnabled(false);
 
         lblId7.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         lblId7.setText("ID:");
@@ -1444,6 +1444,8 @@ public class AirportFrame extends javax.swing.JFrame {
         }
         jTabbedPane1.setEnabledAt(5, false);
         jTabbedPane1.setEnabledAt(6, false);
+        jTabbedPane1.setEnabledAt(7, false);
+        
     }//GEN-LAST:event_administratorActionPerformed
 
     private void userActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userActionPerformed
@@ -1478,7 +1480,7 @@ public class AirportFrame extends javax.swing.JFrame {
         Response response = passenger.registerPassenger(id, firstname, lastname, day, month, year, phoneCode, phone, country);
         if (Status.CREATED == response.getStatus()){
             this.userSelect.addItem("" + id);
-            JOptionPane.showMessageDialog(null, response.getMessage(), "Registro exitoso", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, response.getMessage(), "Successfully registered", JOptionPane.INFORMATION_MESSAGE);
             txtId2.setText("");
             txtFirstName.setText("");
             txtLastName.setText("");
@@ -1489,7 +1491,7 @@ public class AirportFrame extends javax.swing.JFrame {
             DAY.setSelectedIndex(0);
             MONTH.setSelectedIndex(0);
         }else
-            JOptionPane.showMessageDialog(null, response.getMessage(), "Error de registro", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, response.getMessage(), "Register Error", JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_btnRegisterActionPerformed
 
     private void btnCreatePlaneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreatePlaneActionPerformed
@@ -1503,7 +1505,7 @@ public class AirportFrame extends javax.swing.JFrame {
 
         Response response = planeC.registerPlane(id, brand, model, maxCapacity, airline);
         if (Status.CREATED == response.getStatus()){
-            JOptionPane.showMessageDialog(null, response.getMessage(), "Registro exitoso", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, response.getMessage(), "Successfully Registered", JOptionPane.INFORMATION_MESSAGE);
             txtId3.setText("");
             txtBrand.setText("");
             txtModel.setText("");
@@ -1511,7 +1513,7 @@ public class AirportFrame extends javax.swing.JFrame {
             txtAirline.setText("");
             this.cbPlane.addItem(id);
         }else
-            JOptionPane.showMessageDialog(null, response.getMessage(), "Error de registro", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, response.getMessage(), "Register Error", JOptionPane.ERROR_MESSAGE);
 
         
     }//GEN-LAST:event_btnCreatePlaneActionPerformed
@@ -1527,7 +1529,7 @@ public class AirportFrame extends javax.swing.JFrame {
 
         Response response = control.registerAirport(id, name, city, country, latitude, longitude);
         if (Status.CREATED == response.getStatus()){
-            JOptionPane.showMessageDialog(null, response.getMessage(), "Registro exitoso", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, response.getMessage(), "Successfully Registered", JOptionPane.INFORMATION_MESSAGE);
             txtAirportId.setText("");
             txtAirportName.setText("");
             txtAirportCity.setText("");
@@ -1539,7 +1541,7 @@ public class AirportFrame extends javax.swing.JFrame {
             this.cbLocation53.addItem(id);
         }
         else
-            JOptionPane.showMessageDialog(null, response.getMessage(), "Error de registro", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, response.getMessage(), "Register Error", JOptionPane.ERROR_MESSAGE);
 
     }//GEN-LAST:event_btnCreateAirportActionPerformed
 
@@ -1563,7 +1565,7 @@ public class AirportFrame extends javax.swing.JFrame {
 
         Response response = flightC.registerFlight(id, planeId, departureLocationId, arrivalLocationId, scaleLocationId, year, month, day, hour, minutes, hoursDurationsArrival, minutesDurationsArrival, hoursDurationsScale, minutesDurationsScale);
         if (Status.CREATED == response.getStatus()){
-            JOptionPane.showMessageDialog(null, response.getMessage(), "Registro exitoso", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, response.getMessage(), "Successfully registered", JOptionPane.INFORMATION_MESSAGE);
             txtId5.setText("");
             txtDepartureDate.setText("");
             MONTH1.setSelectedIndex(0);
@@ -1580,63 +1582,53 @@ public class AirportFrame extends javax.swing.JFrame {
             cbLocation53.setSelectedIndex(0);
             
             this.cbFlight.addItem(id);
-        }else{
-            JOptionPane.showMessageDialog(null, response.getMessage(), "Error de registro", JOptionPane.ERROR_MESSAGE);
-            
-        }
+            this.cbId.addItem(id);
+        }else
+            JOptionPane.showMessageDialog(null, response.getMessage(), "Register Error", JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_btnCreateFlightActionPerformed
 
     private void btnUpdateInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateInfoActionPerformed
         // TODO add your handling code here:
-        long id = Long.parseLong(txtId6.getText());
+        String id = txtId6.getText();
         String firstname = txtFirstName6.getText();
         String lastname = txtLastName6.getText();
-        int year = Integer.parseInt(txtBirthdate6.getText());
-        int month = Integer.parseInt(MONTH.getItemAt(MONTH5.getSelectedIndex()));
-        int day = Integer.parseInt(DAY.getItemAt(DAY5.getSelectedIndex()));
-        int phoneCode = Integer.parseInt(txtPrefix6.getText());
-        long phone = Long.parseLong(txtPhoneNumer6.getText());
+        String year = txtBirthdate6.getText();
+        String month = MONTH.getItemAt(MONTH5.getSelectedIndex());
+        String day = DAY.getItemAt(DAY5.getSelectedIndex());
+        String phoneCode = txtPrefix6.getText();
+        String phone = txtPhoneNumber6.getText();
         String country = txtCountry6.getText();
-
-        LocalDate birthDate = LocalDate.of(year, month, day);
-
-        Passenger passenger = null;
-        for (Passenger p : this.passengers) {
-            if (p.getId() == id) {
-                passenger = p;
-            }
-        }
-
-        passenger.setFirstname(firstname);
-        passenger.setLastname(lastname);
-        passenger.setBirthDate(birthDate);
-        passenger.setCountryPhoneCode(phoneCode);
-        passenger.setPhone(phone);
-        passenger.setCountry(country);
+        
+        
+        Response response = passenger.updatePassenger(id, firstname, lastname, day, month, year, phoneCode, phone, country);
+        if (Status.CREATED == response.getStatus()){
+            JOptionPane.showMessageDialog(null, response.getMessage(), "Successfully Updated", JOptionPane.INFORMATION_MESSAGE);
+            txtId6.setText("");
+            txtFirstName6.setText("");
+            txtLastName6.setText("");
+            txtBirthdate6.setText("");
+            MONTH5.setSelectedIndex(0);
+            DAY5.setSelectedIndex(0);
+            txtPrefix6.setText("");
+            txtPhoneNumber6.setText("");
+            txtCountry6.setText("");
+            
+        }else
+            JOptionPane.showMessageDialog(null, response.getMessage(), "Update Error", JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_btnUpdateInfoActionPerformed
 
     private void btnAddFlightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddFlightActionPerformed
         // TODO add your handling code here:
-        long passengerId = Long.parseLong(txtId7.getText());
+        String passengerId = txtId7.getText();
         String flightId = cbFlight.getItemAt(cbFlight.getSelectedIndex());
-
-        Passenger passenger = null;
-        Flight flight = null;
-
-        for (Passenger p : this.passengers) {
-            if (p.getId() == passengerId) { 
-                passenger = p;
-            }
-        }
-
-        for (Flight f : this.flights) {
-            if (flightId.equals(f.getId())) {
-                flight = f;
-            }
-        }
-
-        passenger.addFlight(flight);
-        flight.addPassenger(passenger);
+        
+        Response response = flightC.addToFlight(passengerId, flightId);
+        if (Status.CREATED == response.getStatus()){
+            JOptionPane.showMessageDialog(null, response.getMessage(), "Flight Booked Successfully", JOptionPane.INFORMATION_MESSAGE);
+            txtId7.setText("");
+            cbFlight.setSelectedIndex(0);
+        }else
+            JOptionPane.showMessageDialog(null, response.getMessage(), "Update Error", JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_btnAddFlightActionPerformed
 
     private void btnDelayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDelayActionPerformed
@@ -1732,6 +1724,10 @@ public class AirportFrame extends javax.swing.JFrame {
     private void txtAirportIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAirportIdActionPerformed
         
     }//GEN-LAST:event_txtAirportIdActionPerformed
+
+    private void txtId6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtId6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtId6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1887,7 +1883,7 @@ public class AirportFrame extends javax.swing.JFrame {
     private javax.swing.JTextField txtMaxCap;
     private javax.swing.JTextField txtModel;
     private javax.swing.JTextField txtPhoneNumber;
-    private javax.swing.JTextField txtPhoneNumer6;
+    private javax.swing.JTextField txtPhoneNumber6;
     private javax.swing.JTextField txtPrefix;
     private javax.swing.JTextField txtPrefix6;
     private javax.swing.JRadioButton user;

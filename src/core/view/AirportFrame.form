@@ -1365,7 +1365,7 @@
                                           <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
                                           <Component id="lblSeparator61" min="-2" pref="30" max="-2" attributes="0"/>
                                           <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                                          <Component id="txtPhoneNumer6" min="-2" pref="130" max="-2" attributes="0"/>
+                                          <Component id="txtPhoneNumber6" min="-2" pref="130" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="lblCountry6" min="-2" max="-2" attributes="0"/>
@@ -1414,7 +1414,7 @@
                               <Component id="lblAddSymbol5" min="-2" max="-2" attributes="0"/>
                               <Component id="txtPrefix6" min="-2" max="-2" attributes="0"/>
                               <Component id="lblSeparator61" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtPhoneNumer6" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtPhoneNumber6" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="29" pref="29" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -1439,12 +1439,13 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtId6">
                   <Properties>
-                    <Property name="editable" type="boolean" value="false"/>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Yu Gothic UI" size="18" style="0"/>
                     </Property>
-                    <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtId6ActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblFirstName6">
                   <Properties>
@@ -1521,7 +1522,7 @@
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                   </AuxValues>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtPhoneNumer6">
+                <Component class="javax.swing.JTextField" name="txtPhoneNumber6">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Yu Gothic UI" size="18" style="0"/>
@@ -1648,7 +1649,6 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Yu Gothic UI" size="18" style="0"/>
                     </Property>
-                    <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblId7">
