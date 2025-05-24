@@ -1,6 +1,6 @@
 package core.controller.utils;
 
-public class Response {
+public class Response implements Cloneable{
     
     private String message;
     private int status;
@@ -29,4 +29,12 @@ public class Response {
         return object;
     }
     
+    @Override
+    public Response clone() {
+        try {
+            return (Response) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(); // Nunca debería pasar si implementás Cloneable
+        }
+    }
 }

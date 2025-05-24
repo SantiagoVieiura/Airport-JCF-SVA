@@ -22,28 +22,28 @@ public class PlaneController {
             int maxCapacity;
             
             if (id.isEmpty() || brand.isEmpty() || model.isEmpty() || maxCapacityS.isEmpty() || airline.isEmpty())
-                return new Response("No text field should be empty", Status.BAD_REQUEST);
+                return new Response("No text field should be empty", Status.BAD_REQUEST).clone();
             
             if(!validId(id))  //De ninguna manera el ID puede tener otro formato (De lo contrario me mato)
-                return new Response("Plane's ID must be exactly 2 uppercase letters and 5 numbers", Status.BAD_REQUEST);
+                return new Response("Plane's ID must be exactly 2 uppercase letters and 5 numbers", Status.BAD_REQUEST).clone();
             
             for (Plane plane : storage.getPlanes())
                 if (plane.getId().equals(id)) 
-                    return new Response("Plane ID already exists", Status.BAD_REQUEST);
+                    return new Response("Plane ID already exists", Status.BAD_REQUEST).clone();
 
             try{
                 maxCapacity = Integer.parseInt(maxCapacityS);
                 if (maxCapacity < 1)
-                   return new Response("The Max Capacity must be greater than 0", Status.BAD_REQUEST); 
+                   return new Response("The Max Capacity must be greater than 0", Status.BAD_REQUEST).clone(); 
             }catch (NumberFormatException e) {
-                return new Response("The Max Capacity must be numeric", Status.BAD_REQUEST);
+                return new Response("The Max Capacity must be numeric", Status.BAD_REQUEST).clone();
             }
             
             Plane plane = new Plane(id, brand,model, maxCapacity, airline);
             storage.getPlanes().add(plane);
-            return new Response("Plane created successfully", Status.CREATED);
+            return new Response("Plane created successfully", Status.CREATED).clone();
         }catch (Exception e){
-            return new Response("Unexpected error", Status.INTERNAL_SERVER_ERROR);
+            return new Response("Unexpected error", Status.INTERNAL_SERVER_ERROR).clone();
         }
     }
     
