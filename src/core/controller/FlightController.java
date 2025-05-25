@@ -15,7 +15,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class FlightController {
 
@@ -209,6 +208,7 @@ public class FlightController {
             
             flight.delay(hours, minutes);
             Collections.sort(storage.getFlights(), Comparator.comparing(Flight::getDepartureDate));
+            
             return new Response("Flight Delayed Successfully", Status.CREATED).clone();
 
         }catch (Exception e){
@@ -263,6 +263,7 @@ public class FlightController {
         if (passenger == null) {
             return new ArrayList<>();
         } else {
+            Collections.sort(passenger.getFlights(), Comparator.comparing(Flight::getDepartureDate));
             return passenger.getFlights();
         }
     }
@@ -270,7 +271,6 @@ public class FlightController {
     public List<Flight> getFlightsId2() {
         return storage.getFlights();
     }
-
     
     public Plane findPlane(String planeId){
         for (Plane p : storage.getPlanes()) 
@@ -285,5 +285,4 @@ public class FlightController {
                 return f;
         return null;
     }
-    
 }

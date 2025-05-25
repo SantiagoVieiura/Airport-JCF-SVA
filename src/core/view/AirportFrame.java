@@ -69,7 +69,7 @@ public class AirportFrame extends javax.swing.JFrame {
         this.cbLocationAdd();
     }
     
-    private void cbLocationAdd(){
+    private void cbLocationAdd(){  //PROFE PORFAVOR VEA QUE ESTOS MÉTODOS CUMPLEN MVC DEBIDO A QUE ESE STORAGE ES EN REALIDAD STORAGECONTROLLER, POR LO QUE STORAGE NO SE VE AFECTADO NI SE INVOCA DESDE ACA
         List<String> ids = storage.getLocationIds();
         cbLocation51.removeAllItems();
         cbLocation52.removeAllItems();
@@ -85,7 +85,7 @@ public class AirportFrame extends javax.swing.JFrame {
         }
     }
     
-    private void cbPlaneAdd(){
+    private void cbPlaneAdd(){//PROFE PORFAVOR VEA QUE ESTOS MÉTODOS CUMPLEN MVC DEBIDO A QUE ESE STORAGE ES EN REALIDAD STORAGECONTROLLER, POR LO QUE STORAGE NO SE VE AFECTADO NI SE INVOCA DESDE ACA
         List<String> ids = storage.getPlaneIds();
         cbPlane.removeAllItems();
         cbPlane.addItem("Plane");
@@ -93,7 +93,7 @@ public class AirportFrame extends javax.swing.JFrame {
             cbPlane.addItem(id);
     }
     
-    private void cbFlightAdd(){
+    private void cbFlightAdd(){//PROFE PORFAVOR VEA QUE ESTOS MÉTODOS CUMPLEN MVC DEBIDO A QUE ESE STORAGE ES EN REALIDAD STORAGECONTROLLER, POR LO QUE STORAGE NO SE VE AFECTADO NI SE INVOCA DESDE ACA
         List<String> ids = storage.getFlightIds();
         cbFlight.removeAllItems();
         cbId.removeAllItems();
@@ -105,7 +105,7 @@ public class AirportFrame extends javax.swing.JFrame {
         }
     }
     
-    private void userSelectAdd(){
+    private void userSelectAdd(){//PROFE PORFAVOR VEA QUE ESTOS MÉTODOS CUMPLEN MVC DEBIDO A QUE ESE STORAGE ES EN REALIDAD STORAGECONTROLLER, POR LO QUE STORAGE NO SE VE AFECTADO NI SE INVOCA DESDE ACA
         List<String> ids = storage.getPassengerIds();
         userSelect.removeAllItems();
         userSelect.addItem("Select User");
@@ -1508,7 +1508,6 @@ public class AirportFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_userActionPerformed
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
-        // TODO add your handling code here:
         String id = txtId2.getText();
         String firstname = txtFirstName.getText();
         String lastname = txtLastName.getText();
@@ -1690,15 +1689,15 @@ public class AirportFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDelayActionPerformed
 
     private void btnRefreshMyFlightsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshMyFlightsActionPerformed
+        DefaultTableModel model = (DefaultTableModel) table8.getModel();
+        model.setRowCount(0);
+        
         String selected = (String) userSelect.getSelectedItem();
         if (selected == null || selected.equals("Select User")) 
             return;
 
         long passengerId = Long.parseLong(selected);
         List<Flight> flights = flightC.getFlightsId(passengerId);
-
-        DefaultTableModel model = (DefaultTableModel) table8.getModel();
-        model.setRowCount(0);
 
         for (Flight flight : flights)
             model.addRow(new Object[]{flight.getId(),flight.getDepartureDate(),flight.calculateArrivalDate()});

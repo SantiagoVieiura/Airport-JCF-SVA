@@ -16,7 +16,7 @@ public class PassengerJson {
 
     public static ArrayList<Passenger> readPassengers() throws IOException {
         // Ruta relativa desde la carpeta de ejecución
-        String path = "build/classes/json/passengers.json";
+        String path = "json/passengers.json";
 
         String content = Files.readString(Paths.get(path), StandardCharsets.UTF_8);
 

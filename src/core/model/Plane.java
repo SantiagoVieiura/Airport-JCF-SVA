@@ -4,7 +4,6 @@
  */
 package core.model;
 
-import core.model.Flight;
 import java.util.ArrayList;
 
 /**

@@ -5,22 +5,24 @@
         <group>
             <file>file:/C:/Users/sebas/Downloads/3er%20Parcial/Airport-JCF-SVA/src/core/model/Passenger.java</file>
             <file>file:/C:/Users/sebas/Downloads/3er%20Parcial/Airport-JCF-SVA/src/core/model/Flight.java</file>
-            <file>file:/C:/Users/sebas/Downloads/3er%20Parcial/Airport-JCF-SVA/src/json/PlaneJson.java</file>
-            <file>file:/C:/Users/sebas/Downloads/3er%20Parcial/Airport-JCF-SVA/src/json/FlightJson.java</file>
             <file>file:/C:/Users/sebas/Downloads/3er%20Parcial/Airport-JCF-SVA/src/core/view/PanelRound.java</file>
             <file>file:/C:/Users/sebas/Downloads/3er%20Parcial/Airport-JCF-SVA/src/core/model/Location.java</file>
+            <file>file:/C:/Users/sebas/Downloads/3er%20Parcial/Airport-JCF-SVA/src/core/model/storage/json/FlightJson.java</file>
             <file>file:/C:/Users/sebas/Downloads/3er%20Parcial/Airport-JCF-SVA/src/core/view/AirportFrame.java</file>
             <file>file:/C:/Users/sebas/Downloads/3er%20Parcial/Airport-JCF-SVA/src/core/controller/utils/Status.java</file>
             <file>file:/C:/Users/sebas/Downloads/3er%20Parcial/Airport-JCF-SVA/src/core/model/storage/Storage.java</file>
             <file>file:/C:/Users/sebas/Downloads/3er%20Parcial/Airport-JCF-SVA/src/core/controller/FlightController.java</file>
             <file>file:/C:/Users/sebas/Downloads/3er%20Parcial/Airport-JCF-SVA/src/main/Main.java</file>
-            <file>file:/C:/Users/sebas/Downloads/3er%20Parcial/Airport-JCF-SVA/build/classes/core/model/storage/json/flights.json</file>
+            <file>file:/C:/Users/sebas/Downloads/3er%20Parcial/Airport-JCF-SVA/build/classes/json/flights.json</file>
+            <file>file:/C:/Users/sebas/Downloads/3er%20Parcial/Airport-JCF-SVA/build/classes/json/planes.json</file>
             <file>file:/C:/Users/sebas/Downloads/3er%20Parcial/Airport-JCF-SVA/src/core/controller/utils/Response.java</file>
+            <file>file:/C:/Users/sebas/Downloads/3er%20Parcial/Airport-JCF-SVA/src/core/model/storage/json/PlaneJson.java</file>
+            <file>file:/C:/Users/sebas/Downloads/3er%20Parcial/Airport-JCF-SVA/src/core/controller/StorageController.java</file>
             <file>file:/C:/Users/sebas/Downloads/3er%20Parcial/Airport-JCF-SVA/src/core/controller/PlaneController.java</file>
-            <file>file:/C:/Users/sebas/Downloads/3er%20Parcial/Airport-JCF-SVA/src/json/LocationJson.java</file>
-            <file>file:/C:/Users/sebas/Downloads/3er%20Parcial/Airport-JCF-SVA/src/json/PassengerJson.java</file>
+            <file>file:/C:/Users/sebas/Downloads/3er%20Parcial/Airport-JCF-SVA/src/core/model/storage/json/PassengerJson.java</file>
             <file>file:/C:/Users/sebas/Downloads/3er%20Parcial/Airport-JCF-SVA/src/core/controller/PassengerController.java</file>
-            <file>file:/C:/Users/sebas/Downloads/3er%20Parcial/Airport-JCF-SVA/build/classes/core/model/storage/json/locations.json</file>
+            <file>file:/C:/Users/sebas/Downloads/3er%20Parcial/Airport-JCF-SVA/build/classes/json/locations.json</file>
+            <file>file:/C:/Users/sebas/Downloads/3er%20Parcial/Airport-JCF-SVA/src/core/model/storage/json/LocationJson.java</file>
             <file>file:/C:/Users/sebas/Downloads/3er%20Parcial/Airport-JCF-SVA/src/core/model/Plane.java</file>
             <file>file:/C:/Users/sebas/Downloads/3er%20Parcial/Airport-JCF-SVA/src/core/controller/AirportController.java</file>
         </group>

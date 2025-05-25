@@ -11,7 +11,7 @@ import org.json.JSONObject;
 
 public class LocationJson {
     public static ArrayList<Location> readLocations() throws IOException {
-        String path = "C:\\Users\\sebas\\Downloads\\3er Parcial\\Airport-JCF-SVA\\build\\classes\\json\\locations.json";
+        String path = "json/locations.json";
         String content = Files.readString(Paths.get(path), StandardCharsets.UTF_8);
         JSONArray array = new JSONArray(content);
         ArrayList<Location> list = new ArrayList<>();

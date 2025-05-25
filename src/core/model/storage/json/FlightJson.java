@@ -14,7 +14,7 @@ import org.json.JSONObject;
 
 public class FlightJson {
     public static ArrayList<Flight> readFlights(ArrayList<Plane> planes, ArrayList<Location> locations) throws IOException {
-        String path = "C:\\Users\\sebas\\Downloads\\3er Parcial\\Airport-JCF-SVA\\build\\classes\\json\\flights.json";
+        String path = "json/flights.json";
         String content = Files.readString(Paths.get(path), StandardCharsets.UTF_8);
         JSONArray array = new JSONArray(content);
         ArrayList<Flight> list = new ArrayList<>();
