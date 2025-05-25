@@ -7,6 +7,7 @@ package core.controller;
 import core.controller.utils.Response;
 import core.controller.utils.Status;
 import core.model.Plane;
+import java.util.List;
 public class PlaneController {
     
     private final StorageController storage;
@@ -45,7 +46,6 @@ public class PlaneController {
         }
     }
     
-    
     private boolean validId(String id) {
         if (id.length() != 7) 
             return false;
@@ -58,5 +58,9 @@ public class PlaneController {
             if (!Character.isDigit(id.charAt(i))) 
                 return false;
         return true;
+    }
+    
+    public List<Plane> getAllPlanes() {
+        return storage.getPlanes();
     }
 }

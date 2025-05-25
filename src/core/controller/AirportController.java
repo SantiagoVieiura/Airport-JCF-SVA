@@ -3,6 +3,7 @@ package core.controller;
 import core.controller.utils.Response;
 import core.controller.utils.Status;
 import core.model.Location;
+import java.util.List;
 
 
 public class AirportController {
@@ -46,11 +47,15 @@ public class AirportController {
             }
             
             Location airport = new Location(id, name, city, country, latitude, longitude);
-            storage.getLocations().add(airport);
+            storage.addLocations(airport);
             return new Response("Airport registered successfully", Status.CREATED).clone();
         }catch (Exception e){
             return new Response("Unexpected error", Status.INTERNAL_SERVER_ERROR).clone();
         }
+    }
+    
+    public List<Location> getAllLocations() {
+        return storage.getLocations(); // asumiendo que `storage` ya está disponible
     }
     
     private boolean validChars(String codigo) {

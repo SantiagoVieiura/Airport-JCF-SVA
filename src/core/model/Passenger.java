@@ -7,6 +7,7 @@ package core.model;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
+import java.util.Comparator;
 
 /**
  *
@@ -36,6 +37,7 @@ public class Passenger {
 
     public void addFlight(Flight flight) {
         this.flights.add(flight);
+        this.flights.sort(Comparator.comparing(Flight::getDepartureDate));
     }
     
     public long getId() {
@@ -108,6 +110,10 @@ public class Passenger {
     
     public int getNumFlights() {
         return flights.size();
+    }
+    
+    public void update(){
+        
     }
     
 }

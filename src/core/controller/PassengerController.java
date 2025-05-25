@@ -8,6 +8,7 @@ import core.controller.utils.Response;
 import core.controller.utils.Status;
 import core.model.Passenger;
 import java.time.LocalDate;
+import java.util.List;
 
 public class PassengerController {
     private StorageController storage;
@@ -65,7 +66,7 @@ public class PassengerController {
             }
             
             Passenger passenger = new Passenger(id, firstname, lastname, LocalDate.of(year, month, day), phoneCode, phone, country);
-            storage.getPassengers().add(passenger);
+            storage.addPassengers(passenger);
             return new Response("Passenger created successfully", Status.CREATED).clone();
         }catch (Exception ex){
             return new Response("Unexpected error", Status.INTERNAL_SERVER_ERROR).clone();
@@ -138,5 +139,9 @@ public class PassengerController {
         }catch (Exception e){
             return new Response("Unexpected error", Status.INTERNAL_SERVER_ERROR).clone();
         }
+    }
+    
+    public List<Passenger> getPassengersIds() {
+        return storage.getPassengers();
     }
 }

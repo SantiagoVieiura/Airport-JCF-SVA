@@ -11,6 +11,9 @@ import core.model.Location;
 import core.model.Passenger;
 import core.model.Plane;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class FlightController {
 
@@ -117,7 +120,7 @@ public class FlightController {
             else 
                 flight = new Flight(id, plane, departure, scale, arrival, departureDate, hoursDurationsArrival, minutesDurationsArrival, hoursDurationsScale, minutesDurationsScale);
            
-            storage.getFlights().add(flight);
+            storage.addFlights(flight);
             return new Response("Flight registered successfully", Status.CREATED).clone();
         } catch (Exception e) {
             return new Response("Unexpected error", Status.INTERNAL_SERVER_ERROR).clone();
@@ -244,6 +247,27 @@ public class FlightController {
         }
         return true;
     }
+    
+    public List<Flight> getFlightsId(long passengerId) {
+        Passenger passenger = null;
+        for (Passenger p : storage.getPassengers()) {
+            if (p.getId() == passengerId) {
+                passenger = p;
+                break;
+            }
+        }
+
+        if (passenger == null) {
+            return new ArrayList<>();
+        } else {
+            return passenger.getFlights();
+        }
+    }
+    
+    public List<Flight> getFlightsId2() {
+        return storage.getFlights();
+    }
+
     
     public Plane findPlane(String planeId){
         for (Plane p : storage.getPlanes()) 
