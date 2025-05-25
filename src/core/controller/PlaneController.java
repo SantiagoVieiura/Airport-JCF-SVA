@@ -7,13 +7,11 @@ package core.controller;
 import core.controller.utils.Response;
 import core.controller.utils.Status;
 import core.model.Plane;
-import core.model.storage.Storage;
-
 public class PlaneController {
     
-    private final Storage storage;
+    private final StorageController storage;
 
-    public PlaneController(Storage storage) {
+    public PlaneController(StorageController storage) {
         this.storage = storage;
     }
     

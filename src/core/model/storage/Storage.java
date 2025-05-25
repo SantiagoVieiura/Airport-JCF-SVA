@@ -27,7 +27,6 @@ public class Storage {
         this.flights = new ArrayList<>();
     }
     
-    
 
     public ArrayList<Passenger> getPassengers() {
         return passengers;
