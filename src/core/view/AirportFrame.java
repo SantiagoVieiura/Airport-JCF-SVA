@@ -1720,16 +1720,10 @@ public class AirportFrame extends javax.swing.JFrame {
         model.setRowCount(0);
 
         for (Flight flight : flights) {
-            model.addRow(new Object[]{
-                flight.getId(),
+            model.addRow(new Object[]{flight.getId(),
                 flight.getDepartureLocation().getAirportId(),
                 flight.getArrivalLocation().getAirportId(),
-                (flight.getScaleLocation() == null ? "-" : flight.getScaleLocation().getAirportId()),
-                flight.getDepartureDate(),
-                flight.calculateArrivalDate(),
-                flight.getPlane().getId(),
-                flight.getNumPassengers()
-            });
+                (flight.getScaleLocation() == null ? "-" : flight.getScaleLocation().getAirportId()),flight.getDepartureDate(),flight.calculateArrivalDate(),flight.getPlane().getId(),flight.getNumPassengers()});
         }
     }//GEN-LAST:event_btnRefreshFlightsActionPerformed
 

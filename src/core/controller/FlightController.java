@@ -12,6 +12,8 @@ import core.model.Passenger;
 import core.model.Plane;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -206,6 +208,7 @@ public class FlightController {
                 return new Response("Too Late to delay this flight", Status.BAD_REQUEST).clone();
             
             flight.delay(hours, minutes);
+            Collections.sort(storage.getFlights(), Comparator.comparing(Flight::getDepartureDate));
             return new Response("Flight Delayed Successfully", Status.CREATED).clone();
 
         }catch (Exception e){
