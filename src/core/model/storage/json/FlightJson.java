@@ -16,50 +16,25 @@ public class FlightJson {
     public static ArrayList<Flight> readFlights(ArrayList<Plane> planes, ArrayList<Location> locations) throws IOException {
         String path = "json/flights.json";
         String content = Files.readString(Paths.get(path), StandardCharsets.UTF_8);
-        JSONArray array = new JSONArray(content);
-        ArrayList<Flight> list = new ArrayList<>();
-
-        for (int i = 0; i < array.length(); i++) {
-            JSONObject obj = array.getJSONObject(i);
-            String id = obj.getString("id");
-            String planeId = obj.getString("plane");
-            String departureId = obj.getString("departureLocation");
-            String arrivalId = obj.getString("arrivalLocation");
-            String scaleId = obj.optString("scaleLocation", null);
-            LocalDateTime departureDate = LocalDateTime.parse(obj.getString("departureDate"));
-            int hoursDurArrival = obj.getInt("hoursDurationArrival");
-            int minutesDurArrival = obj.getInt("minutesDurationArrival");
-            int hoursDurScale = obj.getInt("hoursDurationScale");
-            int minutesDurScale = obj.getInt("minutesDurationScale");
-
-            Plane plane = findPlane(planeId, planes);
-            Location departure = findLocation(departureId, locations);
-            Location arrival = findLocation(arrivalId, locations);
-            Location scale = (scaleId != null && !scaleId.equals("null")) ? findLocation(scaleId, locations) : null;
-
-            Flight flight;
-            if (scale == null) {
-                flight = new Flight(id, plane, departure, arrival, departureDate, hoursDurArrival, minutesDurArrival);
-            } else {
-                flight = new Flight(id, plane, departure, scale, arrival, departureDate, hoursDurArrival, minutesDurArrival, hoursDurScale, minutesDurScale);
-            }
-
-            list.add(flight);
-        }
-        return list;
-    }
-
-    private static Plane findPlane(String id, ArrayList<Plane> planes) {
-        for (Plane p : planes) {
-            if (p.getId().equals(id)) return p;
-        }
-        return null;
-    }
-
-    private static Location findLocation(String id, ArrayList<Location> locations) {
-        for (Location l : locations) {
-            if (l.getAirportId().equals(id)) return l;
-        }
-        return null;
+        return FlightParser.parse(content, planes, locations,
+                                  new PlaneSearcher(), new LocationSearcher());
     }
 }
+
+//esto estaba aquí antes de aplicar el single respon
+    
+    
+//    private static Plane findPlane(String id, ArrayList<Plane> planes) {
+//        for (Plane p : planes) {
+//            if (p.getId().equals(id)) return p;
+//        }
+//        return null;
+//    }
+//
+//    private static Location findLocation(String id, ArrayList<Location> locations) {
+//        for (Location l : locations) {
+//            if (l.getAirportId().equals(id)) return l;
+//        }
+//        return null;
+//    }
+//}
