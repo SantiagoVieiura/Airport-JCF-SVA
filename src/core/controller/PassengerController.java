@@ -53,9 +53,13 @@ public class PassengerController {
                 day = Integer.parseInt(daySTR);
                 month = Integer.parseInt(monthSTR);
                 year = Integer.parseInt(yearSTR);
-                if (year < 1910 || year > 2024) 
-                    return new Response("Invalid birth year", Status.BAD_REQUEST).clone();
+                if (year < 1910) 
+                    return new Response("Birthday is too far away", Status.BAD_REQUEST).clone();
+                
                 LocalDate date = LocalDate.of(year, month, day);
+                
+                if (date.isAfter(LocalDate.now()))
+                    return new Response("The date must not be in the future", Status.BAD_REQUEST).clone();
             } catch (Exception e) {
                 return new Response("Invalid birthdate", Status.BAD_REQUEST).clone();
             }
