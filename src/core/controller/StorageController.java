@@ -11,7 +11,9 @@ import core.model.storage.json.LocationJson;
 import java.io.IOException;
 import core.model.storage.json.PassengerJson;
 import core.model.storage.json.PlaneJson;
+import java.time.Duration;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -130,6 +132,14 @@ public class StorageController {
         for (Observer o : observers) {
             o.update();
         }
+    }
+    
+    public Plane findPlane(String planeId) {
+        for (Plane plane : getPlanes()) 
+            if (plane.getId().equals(planeId)) 
+                return plane;
+
+        return null; 
     }
 
 }

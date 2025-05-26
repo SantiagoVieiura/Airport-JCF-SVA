@@ -4,6 +4,7 @@
  */
 package core.controller;
 
+import core.controller.utils.FlightConflictValidator;
 import core.controller.utils.Response;
 import core.controller.utils.Status;
 import core.model.Flight;
@@ -36,18 +37,17 @@ public class FlightController {
             int day, month, year, hour, minutes, hoursDurationsArrival, minutesDurationsArrival, hoursDurationsScale, minutesDurationsScale;
             Location departure = null, arrival = null, scale = null;
             LocalDateTime departureDate;
-            
+
             if (!validId(id, 1)) 
                 return new Response("Flight's ID must be exactly 3 uppercase letters and 3 numbers", Status.BAD_REQUEST).clone();
-            
+
             if(findFlight(id) != null)
                 return new Response("That Flight ID already exists", Status.BAD_REQUEST).clone();
 
             if (!validId(planeId, 3))
                 return new Response("Plane's ID must be exactly 2 uppercase letters and 5 numbers", Status.BAD_REQUEST).clone();
-            
+
             plane = findPlane(planeId);
-            
             if(plane == null)
                 return new Response("Plane not found", Status.NOT_FOUND).clone();
 
@@ -59,12 +59,12 @@ public class FlightController {
                 if (scaleLocationId.equals(location.getAirportId())) 
                     scale = location;
             }
-            
+
             if (scale == null || scaleLocationId.equals(departureLocationId) || scaleLocationId.equals(arrivalLocationId)) {
                 scale = null;
-                if (! (hoursDurationsScaleS.equals("0") || hoursDurationsScaleS.equals("Hour")) || ! (minutesDurationsScaleS.equals("0") || minutesDurationsScaleS.equals("Minute"))) {
+                if (!(hoursDurationsScaleS.equals("0") || hoursDurationsScaleS.equals("Hour")) || !(minutesDurationsScaleS.equals("0") || minutesDurationsScaleS.equals("Minute"))) {
                     return new Response("Scale duration must be 00:00 when no valid scale location is selected", Status.BAD_REQUEST).clone();
-}
+                }
                 hoursDurationsScale = 0;
                 minutesDurationsScale = 0;
             } else {
@@ -78,51 +78,55 @@ public class FlightController {
                 if (hoursDurationsScale == 0 && minutesDurationsScale == 0) 
                     return new Response("Scale duration must be greater than 00:00", Status.BAD_REQUEST).clone();
             }
-            
-            
+
             if (departure == null || arrival == null)
                 return new Response("Departure and arrival locations must be valid", Status.NOT_FOUND).clone();
-            
+
             if (departure.getAirportId().equals(arrival.getAirportId()))
                 return new Response("Departure and arrival locations cannot be the same", Status.BAD_REQUEST).clone();
 
-            try{
+            try {
                 hoursDurationsArrival = Integer.parseInt(hoursDurationsArrivalS);
                 minutesDurationsArrival = Integer.parseInt(minutesDurationsArrivalS);
 
                 if (hoursDurationsArrival == 0 && minutesDurationsArrival == 0)
                     return new Response("Flight duration must be greater than 00:00", Status.BAD_REQUEST).clone();
-            }catch (NumberFormatException e){
+            } catch (NumberFormatException e) {
                 return new Response("Arrival time must be numeric", Status.BAD_REQUEST).clone();
             }
-            
+
             try {
                 day = Integer.parseInt(dayS);
                 month = Integer.parseInt(monthS);
                 year = Integer.parseInt(yearS);
                 hour = Integer.parseInt(hourS);
                 minutes = Integer.parseInt(minutesS);
-                
+
                 if (year > 2030) 
                     return new Response("Year is too far in the future", Status.BAD_REQUEST).clone();
-                
+
                 departureDate = LocalDateTime.of(year, month, day, hour, minutes);
-                
+
                 if (departureDate.isBefore(LocalDateTime.now()))
                     return new Response("Date must be today or in the future", Status.BAD_REQUEST).clone();
 
             } catch (Exception e) {
                 return new Response("Invalid date", Status.BAD_REQUEST).clone();
             }
+
+            
+            if (FlightConflictValidator.hasConflict(storage.getFlights(),plane.getId(),departureDate,hoursDurationsArrival,minutesDurationsArrival))
+                return new Response("This plane has a time conflict with another flight", Status.BAD_REQUEST).clone();
             
             Flight flight;
             if (scale == null) 
                 flight = new Flight(id, plane, departure, arrival, departureDate, hoursDurationsArrival, minutesDurationsArrival);
             else 
                 flight = new Flight(id, plane, departure, scale, arrival, departureDate, hoursDurationsArrival, minutesDurationsArrival, hoursDurationsScale, minutesDurationsScale);
-           
+
             storage.addFlights(flight);
             return new Response("Flight registered successfully", Status.CREATED).clone();
+
         } catch (Exception e) {
             return new Response("Unexpected error", Status.INTERNAL_SERVER_ERROR).clone();
         }
