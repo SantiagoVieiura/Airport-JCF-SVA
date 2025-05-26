@@ -9,9 +9,12 @@ import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-public class PlaneJson {
-    public static ArrayList<Plane> readPlanes() throws IOException {
-        String path = "json/planes.json";
+public class PlaneJson implements IReader<Plane> {
+
+    private final String path = "json/planes.json";
+
+    @Override
+    public ArrayList<Plane> read() throws IOException {
         String content = Files.readString(Paths.get(path), StandardCharsets.UTF_8);
         JSONArray array = new JSONArray(content);
         ArrayList<Plane> list = new ArrayList<>();
@@ -29,3 +32,4 @@ public class PlaneJson {
         return list;
     }
 }
+

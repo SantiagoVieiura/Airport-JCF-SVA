@@ -9,9 +9,12 @@ import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-public class LocationJson {
-    public static ArrayList<Location> readLocations() throws IOException {
-        String path = "json/locations.json";
+public class LocationJson implements IReader<Location> {
+
+    private final String path = "json/locations.json";
+
+    @Override
+    public ArrayList<Location> read() throws IOException {
         String content = Files.readString(Paths.get(path), StandardCharsets.UTF_8);
         JSONArray array = new JSONArray(content);
         ArrayList<Location> list = new ArrayList<>();
@@ -27,6 +30,8 @@ public class LocationJson {
 
             list.add(new Location(id, name, city, country, latitude, longitude));
         }
+
         return list;
     }
 }
+

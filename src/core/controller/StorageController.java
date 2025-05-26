@@ -35,11 +35,11 @@ public class StorageController {
         locationJson = new LocationJson();
         planeJson = new PlaneJson();
 
-        storage.setPassengers(passengerJson.readPassengers());
-        storage.setLocations(locationJson.readLocations());
-        storage.setPlanes(planeJson.readPlanes());
+        storage.setPassengers(passengerJson.read());
+        storage.setLocations(locationJson.read());
+        storage.setPlanes(planeJson.read());
         storage.setFlights(flightJson.readFlights(storage.getPlanes(), storage.getLocations()));
-        Collections.sort(storage.getPassengers(), Comparator.comparingLong(p -> Long.parseLong(String.valueOf(p.getId()))));
+        Collections.sort(storage.getPassengers(), Comparator.comparingLong(Passenger::getId));
         Collections.sort(storage.getLocations(), Comparator.comparing(Location::getAirportId));
         Collections.sort(storage.getPlanes(), Comparator.comparing(Plane::getId));
         Collections.sort(storage.getFlights(), Comparator.comparing(Flight::getDepartureDate));
@@ -48,7 +48,7 @@ public class StorageController {
 
     public void addPassengers(Passenger p) {
         storage.getPassengers().add(p);
-        Collections.sort(storage.getPassengers(), Comparator.comparingLong(pa -> Long.parseLong(String.valueOf(pa.getId()))));
+        Collections.sort(storage.getPassengers(), Comparator.comparingLong(Passenger::getId));
         notifyObservers();
     }
     
