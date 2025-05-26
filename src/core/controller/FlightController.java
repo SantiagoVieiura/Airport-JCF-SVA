@@ -158,24 +158,25 @@ public class FlightController {
             if (flight == null)
                 return new Response("That Flight doesn't exists", Status.BAD_REQUEST).clone();
             
-            int pas = 0;
-            for (Passenger p : storage.getPassengers()){
-                if (id == p.getId())
+            int pas = flight.getNumPassengers();
+            
+            for (Passenger p : storage.getPassengers())
+                if(id == p.getId())
                     passenger = p;
-                pas = pas+1;
-            }
             
             if (pas >= flight.getPlane().getMaxCapacity())
                 return new Response("This Flight is already full", Status.BAD_REQUEST).clone();
                 
             if (passenger == null)
                 return new Response("That Passenger doesn't exists", Status.BAD_REQUEST).clone();
+            
+            for (Passenger p : flight.getPassengers())
+                if (passenger == p)
+                    return new Response("That Passenger has already booked this Flight", Status.BAD_REQUEST).clone();
 
             if (LocalDateTime.now().isAfter(flight.getDepartureDate()))
                 return new Response("Too Late to log into this flight", Status.BAD_REQUEST).clone();
-            
-            passenger.addFlight(flight);
-            flight.addPassenger(passenger);
+            storage.addToFlight(passenger, flight);
             return new Response("Flight Booked Successfully", Status.CREATED).clone();
         }catch (Exception e){
             return new Response("Unexpected error", Status.INTERNAL_SERVER_ERROR).clone();

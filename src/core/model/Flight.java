@@ -6,8 +6,6 @@ package core.model;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 
 /**
  *
@@ -116,6 +114,10 @@ public class Flight {
     
     public int getNumPassengers() {
         return passengers.size();
+    }
+
+    public ArrayList<Passenger> getPassengers() {
+        return passengers;
     }
     
 }

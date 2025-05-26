@@ -9,6 +9,7 @@ import core.controller.FlightController;
 import core.controller.PassengerController;
 import core.controller.PlaneController;
 import core.controller.StorageController;
+import core.controller.utils.Observer;
 import core.controller.utils.Response;
 import core.controller.utils.Status;
 import java.awt.Color;
@@ -22,7 +23,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author edangulo
  */
-public class AirportFrame extends javax.swing.JFrame {
+public class AirportFrame extends javax.swing.JFrame implements Observer{
 
     /**
      * Creates new form AirportFrame
@@ -58,15 +59,79 @@ public class AirportFrame extends javax.swing.JFrame {
         this.blockPanels();
         
         this.storage = new  StorageController();
+        this.storage.registerObserver(this);
         this.control = new AirportController(storage);
         this.passenger = new PassengerController(storage);
         this.planeC = new PlaneController(storage);
         this.flightC = new FlightController(storage);
         
+        this.update();
         this.userSelectAdd();
+        
+    }
+    
+    @Override
+    public void update() {
+        refreshPassengersTable();
+        refreshMyFlightsTable();
+        refreshAllFlights();
+        refreshAllPlanes();
+        refreshAllLocations();
+        
         this.cbPlaneAdd();
         this.cbFlightAdd();
         this.cbLocationAdd();
+        
+    }
+    
+    public void refreshPassengersTable() {
+        ArrayList<Passenger> passengers = storage.getPassengers();
+        DefaultTableModel model = (DefaultTableModel) table9.getModel(); 
+        model.setRowCount(0);
+
+        for (Passenger p : passengers) 
+            model.addRow(new Object[]{p.getId(),p.getFullname(),p.getBirthDate(),p.calculateAge(),p.generateFullPhone(),p.getCountry(),p.getNumFlights()}); 
+    }
+    
+    public void refreshMyFlightsTable() {
+        DefaultTableModel model = (DefaultTableModel) table8.getModel();
+        model.setRowCount(0);
+
+        String selected = (String) userSelect.getSelectedItem();
+        if (selected != null && !selected.equals("Select User")) {
+            long passengerId = Long.parseLong(selected);
+            List<Flight> flights = flightC.getFlightsId(passengerId);
+            for (Flight flight : flights) 
+                model.addRow(new Object[]{flight.getId(),flight.getDepartureDate(),flight.calculateArrivalDate()});
+        }
+    }
+    
+    public void refreshAllFlights(){
+        List<Flight> flights = flightC.getFlightsId2();
+        DefaultTableModel model = (DefaultTableModel) table10.getModel();
+        model.setRowCount(0);
+
+        for (Flight flight : flights) 
+            model.addRow(new Object[]{flight.getId(),flight.getDepartureLocation().getAirportId(),flight.getArrivalLocation().getAirportId(),(flight.getScaleLocation() == null ? "-" : flight.getScaleLocation().getAirportId()),flight.getDepartureDate(),flight.calculateArrivalDate(),flight.getPlane().getId(),flight.getNumPassengers()});
+    }
+    
+    public void refreshAllPlanes(){
+        List<Plane> planes = planeC.getAllPlanes(); 
+
+        DefaultTableModel model = (DefaultTableModel) table11.getModel();
+        model.setRowCount(0);
+
+        for (Plane plane : planes) 
+            model.addRow(new Object[]{plane.getId(),plane.getBrand(),plane.getModel(),plane.getMaxCapacity(),plane.getAirline(),plane.getNumFlights()});
+    }
+    
+    public void refreshAllLocations(){
+        List<Location> locations = control.getAllLocations();
+        DefaultTableModel model = (DefaultTableModel) table12.getModel();
+        model.setRowCount(0);
+
+        for (Location location : locations)
+            model.addRow(new Object[]{location.getAirportId(),location.getAirportName(),location.getAirportCity(),location.getAirportCountry()});
     }
     
     private void cbLocationAdd(){  //PROFE PORFAVOR VEA QUE ESTOS MÉTODOS CUMPLEN MVC DEBIDO A QUE ESE STORAGE ES EN REALIDAD STORAGECONTROLLER, POR LO QUE STORAGE NO SE VE AFECTADO NI SE INVOCA DESDE ACA
@@ -106,6 +171,7 @@ public class AirportFrame extends javax.swing.JFrame {
     }
     
     private void userSelectAdd(){//PROFE PORFAVOR VEA QUE ESTOS MÉTODOS CUMPLEN MVC DEBIDO A QUE ESE STORAGE ES EN REALIDAD STORAGECONTROLLER, POR LO QUE STORAGE NO SE VE AFECTADO NI SE INVOCA DESDE ACA
+        System.out.println("A");
         List<String> ids = storage.getPassengerIds();
         userSelect.removeAllItems();
         userSelect.addItem("Select User");
@@ -1482,24 +1548,21 @@ public class AirportFrame extends javax.swing.JFrame {
             userSelect.setSelectedIndex(0);
 
         }
-        for (int i = 1; i < jTabbedPane1.getTabCount(); i++) {
-                jTabbedPane1.setEnabledAt(i, true);
-        }
+        for (int i = 1; i < jTabbedPane1.getTabCount(); i++) 
+            jTabbedPane1.setEnabledAt(i, true);
+
         jTabbedPane1.setEnabledAt(5, false);
         jTabbedPane1.setEnabledAt(6, false);
         jTabbedPane1.setEnabledAt(7, false);
-        
     }//GEN-LAST:event_administratorActionPerformed
 
     private void userActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userActionPerformed
         if (administrator.isSelected()) {
             administrator.setSelected(false);
         }
-        for (int i = 1; i < jTabbedPane1.getTabCount(); i++) {
-
+        for (int i = 1; i < jTabbedPane1.getTabCount(); i++) 
             jTabbedPane1.setEnabledAt(i, false);
 
-        }
         jTabbedPane1.setEnabledAt(9, true);
         jTabbedPane1.setEnabledAt(5, true);
         jTabbedPane1.setEnabledAt(6, true);
@@ -1521,7 +1584,8 @@ public class AirportFrame extends javax.swing.JFrame {
         
         Response response = passenger.registerPassenger(id, firstname, lastname, day, month, year, phoneCode, phone, country);
         if (Status.CREATED == response.getStatus()){
-            this.userSelect.addItem("" + id);
+            update();
+            this.userSelectAdd();
             JOptionPane.showMessageDialog(null, response.getMessage(), "Successfully registered", JOptionPane.INFORMATION_MESSAGE);
             txtId2.setText("");
             txtFirstName.setText("");
@@ -1684,65 +1748,29 @@ public class AirportFrame extends javax.swing.JFrame {
             cbId.setSelectedIndex(0);
             cbHour.setSelectedIndex(0);
             cbMinute.setSelectedIndex(0);
+            update();
         }else
             JOptionPane.showMessageDialog(null, response.getMessage(), "Error while trying to Delay", JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_btnDelayActionPerformed
 
     private void btnRefreshMyFlightsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshMyFlightsActionPerformed
-        DefaultTableModel model = (DefaultTableModel) table8.getModel();
-        model.setRowCount(0);
-        
-        String selected = (String) userSelect.getSelectedItem();
-        if (selected == null || selected.equals("Select User")) 
-            return;
-
-        long passengerId = Long.parseLong(selected);
-        List<Flight> flights = flightC.getFlightsId(passengerId);
-
-        for (Flight flight : flights)
-            model.addRow(new Object[]{flight.getId(),flight.getDepartureDate(),flight.calculateArrivalDate()});
+        refreshMyFlightsTable();
     }//GEN-LAST:event_btnRefreshMyFlightsActionPerformed
 
     private void btnRefreshPassengersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshPassengersActionPerformed
-        List<Passenger> passengers = passenger.getPassengersIds(); // controlador
-
-        DefaultTableModel model = (DefaultTableModel) table9.getModel();
-        model.setRowCount(0);
-
-        for (Passenger passenger : passengers) 
-            model.addRow(new Object[]{passenger.getId(),passenger.getFullname(),passenger.getBirthDate(),passenger.calculateAge(),passenger.generateFullPhone(),passenger.getCountry(),passenger.getNumFlights()});
+        refreshPassengersTable();
     }//GEN-LAST:event_btnRefreshPassengersActionPerformed
 
     private void btnRefreshFlightsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshFlightsActionPerformed
-        List<Flight> flights = flightC.getFlightsId2();
-        DefaultTableModel model = (DefaultTableModel) table10.getModel();
-        model.setRowCount(0);
-
-        for (Flight flight : flights) {
-            model.addRow(new Object[]{flight.getId(),
-                flight.getDepartureLocation().getAirportId(),
-                flight.getArrivalLocation().getAirportId(),
-                (flight.getScaleLocation() == null ? "-" : flight.getScaleLocation().getAirportId()),flight.getDepartureDate(),flight.calculateArrivalDate(),flight.getPlane().getId(),flight.getNumPassengers()});
-        }
+        refreshAllFlights();
     }//GEN-LAST:event_btnRefreshFlightsActionPerformed
 
     private void btnRefreshPlanesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshPlanesActionPerformed
-        List<Plane> planes = planeC.getAllPlanes(); 
-
-        DefaultTableModel model = (DefaultTableModel) table11.getModel();
-        model.setRowCount(0);
-
-        for (Plane plane : planes) 
-            model.addRow(new Object[]{plane.getId(),plane.getBrand(),plane.getModel(),plane.getMaxCapacity(),plane.getAirline(),plane.getNumFlights()});
+        refreshAllPlanes();
     }//GEN-LAST:event_btnRefreshPlanesActionPerformed
 
     private void btnRefreshLocationsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshLocationsActionPerformed
-       List<Location> locations = control.getAllLocations();
-        DefaultTableModel model = (DefaultTableModel) table12.getModel();
-        model.setRowCount(0);
-
-        for (Location location : locations)
-            model.addRow(new Object[]{location.getAirportId(),location.getAirportName(),location.getAirportCity(),location.getAirportCountry()});
+       refreshAllLocations();
     }//GEN-LAST:event_btnRefreshLocationsActionPerformed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
@@ -1760,6 +1788,7 @@ public class AirportFrame extends javax.swing.JFrame {
                 txtId6.setText("");
                 txtId7.setText("");
             }
+            update();
         } catch (Exception e) {
         }
     }//GEN-LAST:event_userSelectActionPerformed

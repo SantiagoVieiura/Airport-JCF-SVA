@@ -128,12 +128,7 @@ public class PassengerController {
             if (passenger == null)
                 return new Response("Passenger wasn't selected or it doesn't exists", Status.NOT_FOUND).clone();
             
-            passenger.setFirstname(firstname);
-            passenger.setLastname(lastname);
-            passenger.setBirthDate(LocalDate.of(year, month, day));
-            passenger.setCountryPhoneCode(phoneCode);
-            passenger.setPhone(phone);
-            passenger.setCountry(country);
+            storage.updatePassengerData(passenger, firstname, lastname, LocalDate.of(year, month, day), phoneCode, phone, country);
             return new Response("Passenger updated successfully", Status.CREATED).clone();
             
         }catch (Exception e){

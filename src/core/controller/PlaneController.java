@@ -39,7 +39,7 @@ public class PlaneController {
             }
             
             Plane plane = new Plane(id, brand,model, maxCapacity, airline);
-            storage.getPlanes().add(plane);
+            storage.addPlanes(plane);
             return new Response("Plane created successfully", Status.CREATED).clone();
         }catch (Exception e){
             return new Response("Unexpected error", Status.INTERNAL_SERVER_ERROR).clone();

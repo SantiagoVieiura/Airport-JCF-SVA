@@ -55,7 +55,7 @@ public class AirportController {
     }
     
     public List<Location> getAllLocations() {
-        return storage.getLocations(); // asumiendo que `storage` ya está disponible
+        return storage.getLocations();
     }
     
     private boolean validChars(String codigo) {

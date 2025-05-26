@@ -111,9 +111,6 @@ public class Passenger {
     public int getNumFlights() {
         return flights.size();
     }
-    
-    public void update(){
-        
-    }
+
     
 }
